@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const apiBaseUrl = (import.meta.env.VITE_API_URL || "/api").replace(/\/$/, "");
+// const apiBaseUrl = (import.meta.env.VITE_API_URL || "/api").replace(/\/$/, "");
+const apiBaseUrl="https://ai-lifesignify-1.onrender.com";
 
 const API = axios.create({
   baseURL: apiBaseUrl,
