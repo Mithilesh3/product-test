@@ -1,0 +1,1994 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ cover.title }}</title>
+  <style>
+    {% if assets.deva_font_regular %}
+    @font-face {
+      font-family: "Noto Sans Devanagari";
+      src: url("{{ assets.deva_font_regular }}") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    {% endif %}
+    {% if assets.deva_font_bold %}
+    @font-face {
+      font-family: "Noto Sans Devanagari";
+      src: url("{{ assets.deva_font_bold }}") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    {% endif %}
+
+    :root {
+      --paper: #F6F1E7;
+      --paper-2: #F6F1E7;
+      --ink: #3B2B1A;
+      --ink-soft: #A87C2A;
+      --gold: #C79A3B;
+      --gold-soft: rgba(199, 154, 59, 0.14);
+      --line: #D6B36A;
+      --panel: #FFFDF8;
+      --panel-2: #FFFDF8;
+      --accent-gradient: linear-gradient(135deg,#CFAF63,#A87C2A);
+      --topbar-gradient: linear-gradient(90deg,#CFAF63,#A87C2A);
+      --card-shadow: 0 6px 14px rgba(0,0,0,0.06);
+      --font-heading: Georgia, "Times New Roman", serif;
+      --card-radius: 12px;
+      --icon-lotus: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27%23C79A3B%27%20stroke-width%3D%271.7%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M12%204.7c1.4%202%201.4%204.1%200%206.2-1.4-2.1-1.4-4.2%200-6.2Z%27%2F%3E%3Cpath%20d%3D%27M6%209.2c2.2.3%204%201.5%206%204-2.4-.2-4.4-.8-6-4Z%27%2F%3E%3Cpath%20d%3D%27M18%209.2c-2.2.3-4%201.5-6%204%202.4-.2%204.4-.8%206-4Z%27%2F%3E%3Cpath%20d%3D%27M4.5%2015.7c2.6-.4%205%20.2%207.5%202%202.5-1.8%204.9-2.4%207.5-2%27%2F%3E%3C%2Fsvg%3E");
+      --icon-yantra: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27%23C79A3B%27%20stroke-width%3D%271.5%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Ccircle%20cx%3D%2712%27%20cy%3D%2712%27%20r%3D%278.4%27%2F%3E%3Cpath%20d%3D%27M12%206.2%2017.4%2016H6.6Z%27%2F%3E%3Cpath%20d%3D%27M12%2017.8%206.6%208h10.8Z%27%2F%3E%3Ccircle%20cx%3D%2712%27%20cy%3D%2712%27%20r%3D%271.7%27%2F%3E%3C%2Fsvg%3E");
+      --icon-sun: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27%23C79A3B%27%20stroke-width%3D%271.6%27%20stroke-linecap%3D%27round%27%3E%3Ccircle%20cx%3D%2712%27%20cy%3D%2712%27%20r%3D%274.2%27%2F%3E%3Cpath%20d%3D%27M12%202.6v3M12%2018.4v3M2.6%2012h3M18.4%2012h3M5.5%205.5l2.1%202.1M16.4%2016.4l2.1%202.1M18.5%205.5l-2.1%202.1M7.6%2016.4l-2.1%202.1%27%2F%3E%3C%2Fsvg%3E");
+      --icon-moon: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27%23C79A3B%27%20stroke-width%3D%271.7%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M15.8%203.5a8.6%208.6%200%201%200%204.7%2015.4A9%209%200%200%201%2015.8%203.5Z%27%2F%3E%3Ccircle%20cx%3D%278.2%27%20cy%3D%278.7%27%20r%3D%271%27%20fill%3D%27%23C79A3B%27%20stroke%3D%27none%27%2F%3E%3C%2Fsvg%3E");
+      --icon-mandala: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27%23C79A3B%27%20stroke-width%3D%271.4%27%20stroke-linecap%3D%27round%27%3E%3Ccircle%20cx%3D%2712%27%20cy%3D%2712%27%20r%3D%277.8%27%2F%3E%3Ccircle%20cx%3D%2712%27%20cy%3D%2712%27%20r%3D%274.4%27%2F%3E%3Cpath%20d%3D%27M12%202.7v18.6M2.7%2012h18.6M5.2%205.2l13.6%2013.6M18.8%205.2%205.2%2018.8%27%2F%3E%3C%2Fsvg%3E");
+      --icon-chakra: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27%23C79A3B%27%20stroke-width%3D%271.4%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Ccircle%20cx%3D%2712%27%20cy%3D%2712%27%20r%3D%278.1%27%2F%3E%3Ccircle%20cx%3D%2712%27%20cy%3D%2712%27%20r%3D%272.2%27%2F%3E%3Cpath%20d%3D%27M12%203.9V8M12%2016v4.1M3.9%2012H8M16%2012h4.1M5.5%205.5l2.9%202.9M15.6%2015.6l2.9%202.9M18.5%205.5l-2.9%202.9M8.4%2015.6l-2.9%202.9%27%2F%3E%3C%2Fsvg%3E");
+      --radius: 13px;
+      --box-label-size: 14.2px;
+      --box-body-size: 13.4px;
+      --box-body-line-height: 1.48;
+      --box-pad-x: 10px;
+      --box-pad-top: 8px;
+      --box-pad-bottom: 6px;
+      --box-label-gap: 5px;
+      --box-four-gap: 2.2em;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Noto Sans Devanagari", "Inter", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      line-height: 1.55;
+      font-size: 13px;
+    }
+
+    @page { size: A4; margin: 0; }
+
+    .report-shell {
+      width: 210mm;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .page {
+      position: relative;
+      width: 210mm;
+      min-height: 297mm;
+      padding: 14mm 13mm 12mm;
+      background:
+        radial-gradient(circle at 14% 10%, rgba(207, 175, 99, 0.08), transparent 34%),
+        radial-gradient(circle at 86% 88%, rgba(168, 124, 42, 0.06), transparent 36%),
+        linear-gradient(180deg, var(--paper), var(--paper-2));
+      page-break-after: always;
+      overflow: hidden;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 16% 18%, rgba(207, 175, 99, 0.07), transparent 40%),
+        radial-gradient(circle at 84% 82%, rgba(168, 124, 42, 0.05), transparent 42%);
+      background-repeat: no-repeat, no-repeat;
+      background-position: center center, center center;
+      background-size: cover, cover;
+      opacity: 0.045;
+      pointer-events: none;
+      z-index: 0;
+    }
+    {% if assets.mandala_bg_uri %}
+    .cover::before {
+      background-image:
+        url("{{ assets.mandala_bg_uri }}"),
+        radial-gradient(circle at 50% 42%, rgba(199, 154, 59, 0.13), transparent 62%),
+        radial-gradient(circle at 84% 82%, rgba(168, 124, 42, 0.05), transparent 44%);
+      background-repeat: no-repeat, no-repeat, no-repeat;
+      background-position: center center, center center, center center;
+      background-size: 100% auto, cover, cover;
+      opacity: 0.05;
+    }
+    {% endif %}
+
+    .page::after {
+      content: "";
+      position: absolute;
+      inset: 6mm;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .layer {
+      position: relative;
+      z-index: 2;
+    }
+    .page > .layer::before {
+      content: "";
+      position: absolute;
+      top: -6mm;
+      left: 0;
+      right: 0;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--topbar-gradient);
+      pointer-events: none;
+    }
+
+    .watermark {
+      position: absolute;
+      right: 10mm;
+      bottom: 8mm;
+      z-index: 3;
+      font-size: 10px;
+      color: rgba(168, 124, 42, 0.78);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cover {
+      padding-top: 16mm;
+    }
+    .cover-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18mm;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: var(--ink-soft);
+      letter-spacing: 0.03em;
+    }
+    .brand img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 12px;
+      background: var(--accent-gradient);
+      color: #FFFDF8;
+      font-size: 11px;
+      box-shadow: var(--card-shadow);
+    }
+    .image-shell {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: rgba(199, 154, 59, 0.12);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .image-shell img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .image-shell--brand {
+      width: 28px;
+      height: 28px;
+    }
+    .image-shell--icon {
+      width: 25px;
+      height: 25px;
+    }
+    .image-shell--meta {
+      width: 22px;
+      height: 22px;
+    }
+    .image-fallback {
+      font-size: 11px;
+      color: #7b5d22;
+      line-height: 1;
+      font-weight: 700;
+      padding-top: 1px;
+    }
+    .image-fallback.hidden {
+      display: none;
+    }
+    .cover-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .cover h1 {
+      margin: 0;
+      color: #4a3512;
+      font-size: 32px;
+      line-height: 1.18;
+    }
+    .cover-sub {
+      margin: 10px 0 0;
+      color: #6c562a;
+      font-size: 15.8px;
+      line-height: 1.5;
+    }
+    .identity {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+    .identity .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 9px 10px;
+      min-height: 60px;
+      box-shadow: var(--card-shadow);
+    }
+    .identity .card h4 {
+      margin: 0 0 5px;
+      color: var(--gold);
+      font-size: 11.4px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .identity .card p {
+      margin: 0;
+      font-size: 14.6px;
+      line-height: 1.4;
+      color: #4a3512;
+      font-weight: 700;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    .cover-art {
+      display: grid;
+      justify-items: center;
+      gap: 7px;
+    }
+    .cover-art img.main {
+      width: 120px;
+      max-height: 150px;
+      object-fit: contain;
+      object-position: center;
+      transform: scale(1.12);
+      transform-origin: center;
+    }
+    .cover-art img.secondary {
+      width: 108px;
+      max-height: 130px;
+      object-fit: contain;
+      object-position: center;
+      transform: scale(1.12);
+      transform-origin: center;
+      opacity: 0.86;
+    }
+    .cover-bottom-art {
+      position: absolute;
+      left: 50%;
+      bottom: 63mm;
+      transform: translateX(-50%);
+      width: 158mm;
+      height: 112mm;
+      z-index: 1;
+      pointer-events: none;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .cover-bottom-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0.9;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 9px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line);
+    }
+    .kicker {
+      margin: 0;
+      color: var(--gold);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      line-height: 1.3;
+    }
+    .title {
+      margin: 3px 0 0;
+      font-size: 24px;
+      color: var(--ink);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .header,
+    .section-top,
+    .section-top + .narrative {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .page-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #6f592c;
+      font-size: 11.6px;
+      line-height: 1.35;
+    }
+    .page-meta img {
+      width: 23px;
+      height: 23px;
+      object-fit: contain;
+    }
+
+    .section-shell {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 11px 12px;
+      margin-top: 8px;
+      min-height: auto;
+      display: block;
+      box-shadow: var(--card-shadow);
+    }
+    .section-shell > * + * { margin-top: 8px; }
+    .section-shell--executive { min-height: auto; }
+    .section-shell--executive .metrics-wrap {
+      gap: 7px;
+    }
+    .section-shell--executive .spine {
+      font-size: 10px;
+      padding: 6px 7px;
+    }
+    .section-shell--executive .spine p {
+      margin-bottom: 2px;
+      line-height: 1.3;
+    }
+    .page--single-profile .header {
+      margin-bottom: 7px;
+      padding-bottom: 5px;
+    }
+    .page--single-profile .section-shell {
+      min-height: auto;
+      gap: 8px;
+      padding: 10px;
+    }
+    .profile-premium {
+      display: grid;
+      gap: 8px;
+    }
+    .profile-premium-title {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.2;
+      font-weight: 800;
+      color: #1f3f67;
+    }
+    .profile-intro {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #5b4a2f;
+      background: #fffdf8;
+      border: 1px solid rgba(198, 155, 79, 0.4);
+      border-radius: 12px;
+      padding: 8px 10px;
+      box-shadow: 0 4px 10px rgba(27, 40, 63, 0.05);
+    }
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 7px;
+    }
+    .profile-block {
+      background: #fffefb;
+      border: 1px solid rgba(198, 155, 79, 0.5);
+      border-radius: 12px;
+      padding: 8px 10px;
+      box-shadow: 0 6px 14px rgba(20, 34, 56, 0.06);
+    }
+    .profile-block h4 {
+      margin: 0 0 6px;
+      color: #1d3d64;
+      font-size: 14.4px;
+      line-height: 1.3;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    .profile-summary {
+      margin: 0;
+      font-size: 12.3px;
+      line-height: 1.56;
+      color: #3f3424;
+      word-break: break-word;
+    }
+    .profile-list {
+      margin: 0;
+      padding-left: 16px;
+      font-size: 12.6px;
+      line-height: 1.5;
+      color: #3f3424;
+    }
+    .profile-list li {
+      margin-bottom: 4px;
+    }
+    .profile-facts {
+      display: grid;
+      gap: 5px;
+    }
+    .profile-fact {
+      display: block;
+      font-size: 12px;
+      line-height: 1.46;
+      color: #3f3424;
+      border-bottom: 1px dashed rgba(198, 155, 79, 0.3);
+      padding: 0 0 4px 12px;
+      position: relative;
+    }
+    .profile-fact::before {
+      content: "â€¢";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #8b651f;
+      font-weight: 700;
+    }
+    .profile-fact:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .profile-fact strong {
+      color: #1f3f67;
+      font-weight: 700;
+      display: inline-block;
+      margin-right: 6px;
+    }
+    .profile-numbers {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 7px;
+    }
+    .profile-number-card {
+      border: 1px solid rgba(198, 155, 79, 0.55);
+      border-radius: 11px;
+      padding: 7px 6px;
+      text-align: center;
+      background: #ffffff;
+      box-shadow: 0 4px 10px rgba(16, 34, 58, 0.05);
+    }
+    .profile-number-card .label {
+      margin: 0;
+      font-size: 10.8px;
+      color: #6e592d;
+      line-height: 1.3;
+      font-weight: 600;
+    }
+    .profile-number-card .value {
+      margin-top: 4px;
+      font-size: 18px;
+      line-height: 1.1;
+      font-weight: 800;
+      color: #1f3f67;
+    }
+    .section-top {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4px;
+      align-items: center;
+      position: relative;
+      margin-bottom: 2px;
+      padding-bottom: 8px;
+    }
+    .section-top::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: var(--line);
+      opacity: 0.9;
+    }
+    .section-top .image-shell--icon {
+      display: none;
+    }
+    .section-title {
+      margin: 0;
+      color: var(--ink);
+      font-size: 22px;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: 0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      --section-icon: var(--icon-lotus);
+    }
+    .section-title::before {
+      content: "";
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+      background-image: var(--section-icon);
+      background-repeat: no-repeat;
+      background-size: 18px 18px;
+      background-position: center;
+      transform: translateY(1px);
+    }
+    .page:not(.cover):nth-of-type(6n + 2) .section-title { --section-icon: var(--icon-lotus); }
+    .page:not(.cover):nth-of-type(6n + 3) .section-title { --section-icon: var(--icon-yantra); }
+    .page:not(.cover):nth-of-type(6n + 4) .section-title { --section-icon: var(--icon-sun); }
+    .page:not(.cover):nth-of-type(6n + 5) .section-title { --section-icon: var(--icon-moon); }
+    .page:not(.cover):nth-of-type(6n + 6) .section-title { --section-icon: var(--icon-mandala); }
+    .page:not(.cover):nth-of-type(6n + 7) .section-title { --section-icon: var(--icon-chakra); }
+    .page-meta .image-shell {
+      background: var(--accent-gradient);
+      border-color: var(--line);
+    }
+    .narrative {
+      margin: 0;
+      color: #4f3b1b;
+      font-size: 13px;
+      line-height: 1.6;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      padding-left: 12px;
+      position: relative;
+    }
+    .narrative::before {
+      content: "â€¢";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #8b651f;
+      font-weight: 700;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 7px;
+      align-content: start;
+    }
+    .mini {
+      background: #fffefb;
+      border: 1px solid rgba(198, 155, 79, 0.5);
+      border-left: 3px solid #c79a3b;
+      border-radius: 10px;
+      padding: 7px 9px 6px 11px;
+      min-height: 0;
+      box-shadow: none;
+    }
+    .mini h5 {
+      margin: 0 0 3px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #34230e;
+      letter-spacing: 0.02em;
+      line-height: 1.32;
+      position: relative;
+      padding-left: 12px;
+    }
+    .mini h5::before {
+      content: "â€¢";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #8b651f;
+      font-weight: 700;
+    }
+    .mini p {
+      margin: 0;
+      font-size: 12.4px;
+      color: #49361a;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      line-height: 1.5;
+      text-wrap: pretty;
+    }
+    .cards--four .mini {
+      padding-top: 7px;
+      padding-bottom: 6px;
+    }
+    .cards--four .mini p {
+      margin-top: 0;
+    }
+    .cards--four .mini--tight p {
+      margin-top: 0;
+    }
+    .cards--four .mini--dense p {
+      margin-top: 0;
+    }
+    .cards--core-align {
+      grid-template-rows: none;
+      align-content: start;
+      align-items: start;
+      gap: 7px;
+    }
+    .cards--core-align .mini {
+      height: 100%;
+      min-height: 0;
+      box-sizing: border-box;
+    }
+    .mini--tight,
+    .mini--dense {
+      justify-content: flex-start;
+      padding-top: 8px;
+      padding-bottom: 5px;
+    }
+    .mini--tight h5 {
+      font-size: 14px;
+    }
+    .mini--tight p {
+      font-size: 13.2px;
+      line-height: 1.46;
+    }
+    .mini--dense h5 {
+      font-size: 13.7px;
+    }
+    .mini--dense p {
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .bullets {
+      margin: 0;
+      padding-left: 18px;
+      color: #4b3a1d;
+      font-size: 12.5px;
+      line-height: 1.54;
+    }
+    .bullets li { margin-bottom: 5px; }
+    .kv-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid rgba(198, 155, 79, 0.5);
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fffefb;
+      font-size: 12.5px;
+    }
+    .kv-table tr + tr {
+      border-top: 1px solid rgba(198, 155, 79, 0.34);
+    }
+    .kv-table th,
+    .kv-table td {
+      text-align: left;
+      vertical-align: top;
+      padding: 7px 9px;
+      line-height: 1.45;
+      color: #4b3a1d;
+    }
+    .kv-table th {
+      width: 36%;
+      color: #8b651f;
+      font-weight: 700;
+      background: rgba(199, 154, 59, 0.08);
+    }
+
+    .diagram {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--panel);
+      padding: 7px;
+      max-height: 170px;
+      overflow: hidden;
+      margin-top: 4px;
+      box-shadow: var(--card-shadow);
+    }
+    .diagram svg {
+      width: 100%;
+      height: auto;
+      max-height: 152px;
+      display: block;
+    }
+
+    .metrics-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 7px;
+    }
+    .metrics-left, .metrics-right {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--panel);
+      padding: 8px;
+      box-shadow: var(--card-shadow);
+    }
+    .metrics-left canvas {
+      width: 100% !important;
+      height: 166px !important;
+    }
+    .section-shell--executive .metrics-left canvas {
+      height: 156px !important;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+    .metric-item {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 6px;
+      background: var(--panel);
+      box-shadow: var(--card-shadow);
+    }
+    .metric-item h5 {
+      margin: 0;
+      font-size: 11.1px;
+      line-height: 1.35;
+      color: #8b651f;
+    }
+    .metric-item .value {
+      margin-top: 4px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFFDF8;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      padding: 3px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--accent-gradient);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    .spine {
+      margin-top: 8px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 8px 9px;
+      background: rgba(199, 154, 59, 0.12);
+      font-size: 12.3px;
+      line-height: 1.52;
+      color: var(--ink);
+      box-shadow: var(--card-shadow);
+    }
+    .spine p { margin: 0 0 5px; }
+    .spine p:last-child { margin-bottom: 0; }
+
+    /* Professional clean look override */
+    :root {
+      --paper: #f5f7fb;
+      --paper-2: #ffffff;
+      --ink: #1f2937;
+      --ink-soft: #334155;
+      --gold: #1d4ed8;
+      --line: #d7dfeb;
+      --panel: #ffffff;
+      --panel-2: #ffffff;
+      --accent-gradient: linear-gradient(90deg, #1d4ed8, #1e40af);
+      --topbar-gradient: linear-gradient(90deg, #1d4ed8, #1e40af);
+      --card-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+      --font-heading: "Noto Sans Devanagari", "Inter", sans-serif;
+    }
+    html, body {
+      color: var(--ink);
+      background: #eef2f7;
+      font-size: 12.5px;
+    }
+    .page {
+      padding: 12mm 12mm 11mm;
+      background: #ffffff;
+      border: 1px solid #e1e8f2;
+      border-radius: 8px;
+    }
+    .page::before,
+    .page::after,
+    .page > .layer::before {
+      display: none;
+      content: none;
+    }
+    .watermark {
+      color: #94a3b8;
+      letter-spacing: 0.04em;
+      font-size: 9px;
+    }
+    .cover {
+      padding-top: 6mm;
+    }
+    .cover-top {
+      margin-bottom: 8mm;
+    }
+    .pill {
+      background: #eff6ff;
+      border-color: #c7d7f2;
+      color: #1d4ed8;
+      box-shadow: none;
+      font-weight: 600;
+    }
+    .cover-grid {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .cover h1 {
+      color: #0f172a;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+    .cover-sub {
+      color: #475569;
+      font-size: 14px;
+      margin-top: 7px;
+    }
+    .cover-art,
+    .cover-bottom-art {
+      display: none !important;
+    }
+    .identity .card {
+      border-color: #d7dfeb;
+      border-radius: 10px;
+      box-shadow: none;
+    }
+    .identity .card h4 {
+      color: #1d4ed8;
+      text-transform: none;
+      font-size: 11.5px;
+      letter-spacing: 0;
+    }
+    .identity .card p {
+      color: #0f172a;
+      font-size: 14px;
+    }
+    .header {
+      border-bottom: 1px solid #dbe3ef;
+      margin-bottom: 7px;
+      padding-bottom: 5px;
+    }
+    .kicker {
+      color: #1d4ed8;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 11px;
+    }
+    .title {
+      color: #0f172a;
+      font-size: 20px;
+      line-height: 1.25;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+    .page-meta {
+      color: #64748b;
+      font-size: 11px;
+    }
+    .page-meta .image-shell {
+      display: none;
+    }
+    .section-shell {
+      border-color: #d7dfeb;
+      border-radius: 10px;
+      box-shadow: none;
+      padding: 10px 10px;
+      margin-top: 6px;
+      background: #ffffff;
+    }
+    .section-top {
+      padding-bottom: 6px;
+      margin-bottom: 2px;
+    }
+    .section-top::after {
+      height: 1px;
+      background: #dbe3ef;
+      opacity: 1;
+    }
+    .section-title {
+      color: #0f172a;
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 700;
+      gap: 0;
+    }
+    .section-title::before {
+      display: none;
+      content: none;
+    }
+    .narrative {
+      color: #334155;
+      font-size: 12.6px;
+      line-height: 1.55;
+    }
+    .narrative::before {
+      color: #1d4ed8;
+    }
+
+    @media print {
+      .page {
+        overflow: visible;
+      }
+      .page:not(.cover) .header {
+        margin-top: 2mm;
+      }
+      .page:not(.cover) .section-top {
+        display: block;
+        position: static;
+      }
+      .page:not(.cover) .section-top::after {
+        position: static;
+      }
+      .page:not(.cover) .section-title {
+        display: block;
+        position: static;
+        color: #0f172a;
+      }
+      .page:not(.cover) .section-title::before {
+        display: none;
+        content: none;
+      }
+      .page:not(.cover) .section-shell {
+        position: relative;
+        z-index: 1;
+      }
+    }
+    .mini {
+      border-color: #d7dfeb;
+      border-left: 3px solid #1d4ed8;
+      background: #f8fafc;
+      border-radius: 8px;
+    }
+    .mini h5 {
+      color: #0f172a;
+      font-size: 12.4px;
+      font-weight: 700;
+    }
+    .mini h5::before {
+      color: #1d4ed8;
+    }
+    .mini p {
+      color: #334155;
+      font-size: 12.1px;
+    }
+    .bullets {
+      color: #334155;
+      font-size: 12.3px;
+    }
+    .kv-table {
+      border-color: #d7dfeb;
+      border-radius: 8px;
+      font-size: 12.2px;
+    }
+    .kv-table tr + tr {
+      border-top: 1px solid #e2e8f0;
+    }
+    .kv-table th,
+    .kv-table td {
+      color: #334155;
+      padding: 7px 8px;
+    }
+    .kv-table th {
+      color: #1e3a8a;
+      background: #f1f5f9;
+    }
+    .section-subhead {
+      margin: 3px 0 6px;
+      color: #0f172a;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+    .mono-block {
+      margin: 0;
+      border: 1px solid #d7dfeb;
+      border-radius: 8px;
+      background: #f8fafc;
+      padding: 8px 10px;
+      white-space: pre-wrap;
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 11px;
+      line-height: 1.45;
+      color: #334155;
+    }
+    .grid-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid #d7dfeb;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+      font-size: 12px;
+    }
+    .grid-table th,
+    .grid-table td {
+      border-top: 1px solid #e2e8f0;
+      padding: 6px 7px;
+      text-align: center;
+      color: #334155;
+      line-height: 1.35;
+    }
+    .grid-table tr:first-child th,
+    .grid-table tr:first-child td {
+      border-top: none;
+    }
+    .grid-table th:first-child,
+    .grid-table td:first-child {
+      text-align: left;
+      background: #f8fafc;
+      color: #1e3a8a;
+      font-weight: 700;
+      width: 58px;
+    }
+    .insight-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #334155;
+      font-size: 12.3px;
+      line-height: 1.55;
+    }
+    .insight-list li {
+      margin-bottom: 6px;
+    }
+    .impact-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid #d7dfeb;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+      font-size: 12.1px;
+    }
+    .impact-table tr + tr {
+      border-top: 1px solid #e2e8f0;
+    }
+    .impact-table th,
+    .impact-table td {
+      text-align: left;
+      vertical-align: top;
+      padding: 7px 8px;
+      line-height: 1.45;
+      color: #334155;
+    }
+    .impact-table th {
+      background: #f8fafc;
+      color: #1e3a8a;
+      font-weight: 700;
+    }
+    .impact-table--pos th:nth-child(1) { width: 36%; }
+    .impact-table--pos th:nth-child(2) { width: 64%; }
+    .impact-table--neg th:nth-child(1) { width: 28%; }
+    .impact-table--neg th:nth-child(2) { width: 44%; }
+    .impact-table--neg th:nth-child(3) { width: 28%; }
+    .context-paras {
+      display: grid;
+      gap: 6px;
+      margin-top: 6px;
+    }
+    .context-box {
+      margin: 0;
+      border: 1px solid #d7dfeb;
+      border-radius: 8px;
+      background: #f8fafc;
+      padding: 8px 10px;
+      white-space: pre-wrap;
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 10.8px;
+      line-height: 1.45;
+      color: #334155;
+    }
+
+    .diagram,
+    .metrics-left,
+    .metrics-right,
+    .metric-item,
+    .spine {
+      border-color: #d7dfeb;
+      box-shadow: none;
+      background: #f8fafc;
+    }
+    .metric-item .value {
+      background: #1d4ed8;
+      border-color: #1d4ed8;
+      color: #ffffff;
+      box-shadow: none;
+    }
+    .spine {
+      color: #334155;
+      font-size: 11.8px;
+      background: #f8fafc;
+    }
+
+    @media screen and (max-width: 1200px) {
+      .report-shell {
+        width: 100%;
+      }
+      .page {
+        width: 100%;
+      }
+    }
+
+    @media screen and (max-width: 920px) {
+      .cover-grid {
+        grid-template-columns: 1fr;
+      }
+      .metrics-wrap,
+      .cards,
+      .metric-grid,
+      .identity {
+        grid-template-columns: 1fr;
+      }
+      .section-shell {
+        min-height: auto;
+      }
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+      .profile-numbers {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="report-shell">
+    <section class="page cover">
+      <div class="layer">
+        <div class="cover-top">
+          <div class="brand">
+            <span class="image-shell image-shell--brand" aria-hidden="true">
+              {% if assets.brand_logo_uri %}
+              <img
+                src="{{ assets.brand_logo_uri }}"
+                alt="NumAI logo"
+                loading="eager"
+                onerror="window.__numaiImageFallback(this)"
+              />
+              {% endif %}
+              <span class="image-fallback{% if assets.brand_logo_uri %} hidden{% endif %}">N</span>
+            </span>
+            <span>Life Signify NumAI</span>
+          </div>
+          <span class="pill">{{ meta.plan }} â€¢ {{ meta.report_date }}</span>
+        </div>
+
+        <div class="cover-grid">
+          <div>
+            <h1>{{ cover.title }}</h1>
+            <p class="cover-sub">{{ cover.subtitle }}</p>
+
+            <div class="identity">
+              <div class="card"><h4>à¤•à¥à¤²à¤¾à¤‡à¤‚à¤Ÿ | Client</h4><p>{{ cover.name }}</p></div>
+              <div class="card"><h4>à¤œà¤¨à¥à¤® à¤¤à¤¿à¤¥à¤¿ | DOB</h4><p>{{ cover.dob }}</p></div>
+              <div class="card"><h4>à¤°à¤¿à¤¸à¥à¤• à¤¬à¥ˆà¤‚à¤¡ | Risk</h4><p>{{ cover.risk_band }}</p></div>
+              <div class="card"><h4>à¤¸à¥‡à¤•à¥à¤¶à¤‚à¤¸ | Sections</h4><p>{{ report.report_blueprint.section_count if report.report_blueprint else meta.section_count }}</p></div>
+            </div>
+          </div>
+
+          <div class="cover-art">
+            <span class="image-shell" style="width:120px;height:150px;" aria-hidden="true">
+              {% if assets.cover_ganesha_uri %}
+              <img
+                class="main"
+                src="{{ assets.cover_ganesha_uri }}"
+                alt="Ganesha"
+                loading="eager"
+                onerror="window.__numaiImageFallback(this)"
+              />
+              {% endif %}
+              <span class="image-fallback{% if assets.cover_ganesha_uri %} hidden{% endif %}">à¥</span>
+            </span>
+            <span class="image-shell" style="width:108px;height:130px;" aria-hidden="true">
+              {% if assets.cover_krishna_uri %}
+              <img
+                class="secondary"
+                src="{{ assets.cover_krishna_uri }}"
+                alt="Krishna"
+                loading="eager"
+                onerror="window.__numaiImageFallback(this)"
+              />
+              {% endif %}
+              <span class="image-fallback{% if assets.cover_krishna_uri %} hidden{% endif %}">*</span>
+            </span>
+          </div>
+        </div>
+
+      </div>
+      {% if assets.cover_ganesh_yantra_uri %}
+      <div class="cover-bottom-art" aria-hidden="true">
+        <img
+          src="{{ assets.cover_ganesh_yantra_uri }}"
+          alt="Ganesh Yantra"
+          loading="eager"
+          onerror="window.__numaiImageFallback(this)"
+        />
+      </div>
+      {% endif %}
+      {% if watermark %}<div class="watermark">Preview</div>{% endif %}
+    </section>
+
+    {% for page in basic_report.section_pages %}
+    {% set section = page.section %}
+    <section class="page{% if section.single_page_layout %} page--single-profile{% endif %}">
+      <div class="layer">
+        <header class="header">
+          <div>
+            <p class="kicker">à¤®à¥‚à¤² à¤…à¤‚à¤• à¤µà¤¿à¤¶à¥à¤²à¥‡à¤·à¤£ à¤…à¤¨à¥à¤­à¤¾à¤— | Basic Numerology Section</p>
+            <h2 class="title">{{ section.title }}</h2>
+          </div>
+          <div class="page-meta">
+            <span class="image-shell image-shell--meta" aria-hidden="true">
+              {% if assets.lotus_gold_uri %}
+              <img
+                src="{{ assets.lotus_gold_uri }}"
+                alt="Lotus icon"
+                loading="eager"
+                onerror="window.__numaiImageFallback(this)"
+              />
+              {% endif %}
+              <span class="image-fallback{% if assets.lotus_gold_uri %} hidden{% endif %}">*</span>
+            </span>
+            <span>पृष्ठ {{ page.page_number }} / {{ basic_report.total_pages }}</span>
+          </div>
+        </header>
+
+        <article class="section-shell{% if section.key == 'executive_numerology_summary' %} section-shell--executive{% endif %}">
+          {% if section.profile_ui and section.single_page_layout %}
+          <div class="profile-premium">
+            <h3 class="profile-premium-title">{{ section.profile_ui.title }}</h3>
+            <p class="profile-intro">{{ section.profile_ui.intro_line }}</p>
+
+            <div class="profile-grid">
+              <div class="profile-block">
+                <h4>Profile Snapshot (à¤ªà¥à¤°à¥‹à¤«à¤¾à¤‡à¤² à¤¸à¥à¤¨à¥ˆà¤ªà¤¶à¥‰à¤Ÿ)</h4>
+                <div class="profile-facts">
+                  {% for fact in section.profile_ui.profile_facts %}
+                  <div class="profile-fact">
+                    <strong>{{ fact.label }}</strong>
+                    <span>{{ fact.value }}</span>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <div class="profile-block">
+                <h4>{{ section.profile_ui.summary_title }}</h4>
+                <p class="profile-summary">{{ section.profile_ui.summary }}</p>
+              </div>
+            </div>
+
+            <div class="profile-grid">
+              <div class="profile-block">
+                <h4>{{ section.profile_ui.traits_title }}</h4>
+                <ul class="profile-list">
+                  {% for trait in section.profile_ui.key_traits %}
+                  <li>{{ trait }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+
+              <div class="profile-block">
+                <h4>{{ section.profile_ui.suggestions_title }}</h4>
+                <ul class="profile-list">
+                  {% for suggestion in section.profile_ui.practical_suggestions %}
+                  <li>{{ suggestion }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+
+            <div class="profile-block">
+              <h4>{{ section.profile_ui.numbers_title }}</h4>
+              <div class="profile-numbers">
+                {% for num in section.profile_ui.key_numbers %}
+                <div class="profile-number-card">
+                  <p class="label">{{ num.label }}</p>
+                  <div class="value">{{ num.value }}</div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          {% else %}
+          <div class="section-top">
+            <span class="image-shell image-shell--icon" aria-hidden="true">
+              {% if section.icon_uri %}
+              <img
+                src="{{ section.icon_uri }}"
+                alt="Section icon"
+                loading="eager"
+                onerror="window.__numaiImageFallback(this)"
+              />
+              {% endif %}
+              <span class="image-fallback{% if section.icon_uri %} hidden{% endif %}">â—Ž</span>
+            </span>
+            <h3 class="section-title">{{ section.title }}</h3>
+          </div>
+
+          <p class="narrative">{{ section.narrative }}</p>
+
+          {% if section.key == "executive_numerology_summary" %}
+          <div class="metrics-wrap">
+            <div class="metrics-left">
+              <canvas id="radarChart"></canvas>
+            </div>
+            <div class="metrics-right">
+              <div class="metric-grid">
+                {% for metric in metrics.rows %}
+                <div class="metric-item">
+                  <h5>{{ metric.label }}</h5>
+                  <div class="value">{{ metric.value }}</div>
+                </div>
+                {% endfor %}
+              </div>
+              <div class="spine">
+                <p><strong>à¤®à¥à¤–à¥à¤¯ à¤¤à¤¾à¤•à¤¤:</strong> {{ metrics.spine.primary_strength }}</p>
+                <p><strong>à¤®à¥à¤–à¥à¤¯ à¤šà¥à¤¨à¥Œà¤¤à¥€:</strong> {{ metrics.spine.primary_deficit }}</p>
+                <p><strong>à¤¸à¤‚à¤°à¤šà¤¨à¤¾à¤¤à¥à¤®à¤• à¤•à¤¾à¤°à¤£:</strong> {{ metrics.spine.structural_cause }}</p>
+                <p><strong>à¤¸à¥à¤§à¤¾à¤° à¤«à¥‹à¤•à¤¸:</strong> {{ metrics.spine.intervention_focus }}</p>
+                <p><strong>à¤œà¥‹à¤–à¤¿à¤® à¤¬à¥ˆà¤‚à¤¡:</strong> {{ metrics.risk_band }}</p>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if section.cards %}
+          <div class="cards{% if section.cards|length == 4 and section.key != 'executive_numerology_summary' %} cards--four{% endif %}{% if section.key == 'core_numbers_analysis' %} cards--core-align{% endif %}">
+            {% for card in section.cards %}
+            {% set card_text_len = (card.value | default('') | length) %}
+            {% set mini_class = "mini" %}
+            {% if card_text_len > 640 %}
+            {% set mini_class = "mini mini--dense" %}
+            {% elif card_text_len > 520 %}
+            {% set mini_class = "mini mini--tight" %}
+            {% endif %}
+            <div class="{{ mini_class }}">
+              <h5>{{ card.label }}</h5>
+              <p>{{ card.value }}</p>
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          {% if section.key == "basic_mobile_energy" and section.bullets %}
+          <table class="kv-table">
+            <tbody>
+              {% for bullet in section.bullets %}
+              {% if ":" in bullet %}
+              {% set parts = bullet.split(":", 1) %}
+              <tr>
+                <th>{{ parts[0].strip() }}</th>
+                <td>{{ parts[1].strip() }}</td>
+              </tr>
+              {% else %}
+              <tr>
+                <th>à¤¨à¥‹à¤Ÿ</th>
+                <td>{{ bullet }}</td>
+              </tr>
+              {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+          {% elif section.key == "basic_lo_shu_grid" and section.bullets %}
+          {% set ns = namespace(
+            mobile_number='',
+            frequency_row='',
+            loshu_grid='',
+            present='',
+            missing='',
+            repeating='',
+            challenge='',
+            insight=[],
+            comment=''
+          ) %}
+          {% for bullet in section.bullets %}
+            {% if bullet.startswith("à¤†à¤ªà¤•à¤¾ à¤¨à¤‚à¤¬à¤°:") %}
+              {% set ns.mobile_number = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("à¤…à¤‚à¤• à¤†à¤µà¥ƒà¤¤à¥à¤¤à¤¿ à¤ªà¤‚à¤•à¥à¤¤à¤¿:") %}
+              {% set ns.frequency_row = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("à¤²à¥‹ à¤¶à¥‚ à¤—à¥à¤°à¤¿à¤¡ à¤¬à¥à¤²à¥‰à¤•:") %}
+              {% set ns.loshu_grid = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("à¤®à¥Œà¤œà¥‚à¤¦ à¤…à¤‚à¤• à¤¤à¤¾à¤²à¤¿à¤•à¤¾:") %}
+              {% set ns.present = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("à¤…à¤¨à¥à¤ªà¤¸à¥à¤¥à¤¿à¤¤ à¤…à¤‚à¤• à¤¤à¤¾à¤²à¤¿à¤•à¤¾:") %}
+              {% set ns.missing = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("à¤¦à¥‹à¤¹à¤°à¤¾à¤ à¤…à¤‚à¤• à¤¤à¤¾à¤²à¤¿à¤•à¤¾:") %}
+              {% set ns.repeating = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("à¤šà¥à¤¨à¥Œà¤¤à¥€ à¤²à¤¿à¤‚à¤•:") %}
+              {% set ns.challenge = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("à¤šà¥à¤¨à¥Œà¤¤à¥€ à¤•à¤¨à¥‡à¤•à¥à¤¶à¤¨ ") %}
+              {% set ns.insight = ns.insight + [bullet.split(":", 1)[1].strip()] %}
+            {% elif bullet.startswith("à¤µà¥à¤¯à¤•à¥à¤¤à¤¿à¤—à¤¤ à¤Ÿà¤¿à¤ªà¥à¤ªà¤£à¥€:") %}
+              {% set ns.comment = bullet.split(":", 1)[1].strip() %}
+            {% endif %}
+          {% endfor %}
+
+          <p class="section-subhead">à¤†à¤ªà¤•à¤¾ à¤¨à¤‚à¤¬à¤°: {{ ns.mobile_number }}</p>
+          <p class="section-subhead">à¤…à¤‚à¤• à¤†à¤µà¥ƒà¤¤à¥à¤¤à¤¿ (Digit Frequency):</p>
+          {% set freq_values = ns.frequency_row.split('|') if ns.frequency_row else [] %}
+          <table class="grid-table">
+            <tr>
+              <th>à¤…à¤‚à¤•</th>
+              <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>0</td>
+            </tr>
+            <tr>
+              <th>à¤¸à¤‚à¤–à¥à¤¯à¤¾</th>
+              {% for idx in range(10) %}
+              <td>{{ freq_values[idx] if freq_values|length > idx else "-" }}</td>
+              {% endfor %}
+            </tr>
+          </table>
+
+          <p class="section-subhead">à¤²à¥‹ à¤¶à¥‚ à¤—à¥à¤°à¤¿à¤¡ (Lo Shu Grid)</p>
+          <pre class="mono-block">{{ ns.loshu_grid }}</pre>
+
+          <p class="section-subhead">à¤†à¤ªà¤•à¥‡ à¤²à¤¿à¤ à¤…à¤°à¥à¤¥</p>
+          <table class="kv-table">
+            <tbody>
+              <tr><th>à¤®à¥Œà¤œà¥‚à¤¦ à¤…à¤‚à¤•</th><td>{{ ns.present }}</td></tr>
+              <tr><th>à¤…à¤¨à¥à¤ªà¤¸à¥à¤¥à¤¿à¤¤ à¤…à¤‚à¤•</th><td>{{ ns.missing }}</td></tr>
+              <tr><th>à¤¦à¥‹à¤¹à¤°à¤¾à¤ à¤…à¤‚à¤•</th><td>{{ ns.repeating }}</td></tr>
+            </tbody>
+          </table>
+
+          <p class="section-subhead">à¤¯à¤¹ à¤†à¤ªà¤•à¥€ "{{ ns.challenge }}" à¤šà¥à¤¨à¥Œà¤¤à¥€ à¤¸à¥‡ à¤•à¥ˆà¤¸à¥‡ à¤œà¥à¤¡à¤¼à¤¾ à¤¹à¥ˆ:</p>
+          <ul class="insight-list">
+            {% for item in ns.insight %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+          {% if ns.comment %}
+          <p class="narrative">{{ ns.comment }}</p>
+          {% endif %}
+          {% elif section.key == "basic_positive_negative_impact" and section.bullets %}
+          {% set ns = namespace(pos=[], neg=[]) %}
+          {% for bullet in section.bullets %}
+            {% if bullet.startswith("à¤¸à¤•à¤¾à¤°à¤¾à¤¤à¥à¤®à¤• à¤¤à¤¾à¤²à¤¿à¤•à¤¾ ") %}
+              {% set payload = bullet.split(":", 1)[1].strip() if ":" in bullet else "" %}
+              {% set parts = payload.split("|") %}
+              {% if parts|length >= 2 %}
+                {% set ns.pos = ns.pos + [{'effect': parts[0].strip(), 'impact': parts[1].strip()}] %}
+              {% endif %}
+            {% elif bullet.startswith("à¤šà¥à¤¨à¥Œà¤¤à¥€ à¤¤à¤¾à¤²à¤¿à¤•à¤¾ ") %}
+              {% set payload = bullet.split(":", 1)[1].strip() if ":" in bullet else "" %}
+              {% set parts = payload.split("|") %}
+              {% if parts|length >= 3 %}
+                {% set ns.neg = ns.neg + [{'challenge': parts[0].strip(), 'appearance': parts[1].strip(), 'connection': parts[2].strip()}] %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+
+          <p class="section-subhead">à¤¸à¤•à¤¾à¤°à¤¾à¤¤à¥à¤®à¤• à¤ªà¥à¤°à¤­à¤¾à¤µ (Positive Impact)</p>
+          <table class="impact-table impact-table--pos">
+            <tbody>
+              <tr>
+                <th>à¤ªà¥à¤°à¤­à¤¾à¤µ</th>
+                <th>à¤†à¤ª à¤ªà¤° à¤•à¥ˆà¤¸à¤¾ à¤…à¤¸à¤°</th>
+              </tr>
+              {% for row in ns.pos %}
+              <tr>
+                <td>{{ row.effect }}</td>
+                <td>{{ row.impact }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          <p class="section-subhead" style="margin-top: 8px;">à¤¸à¤‚à¤­à¤¾à¤µà¤¿à¤¤ à¤šà¥à¤¨à¥Œà¤¤à¤¿à¤¯à¤¾à¤ (Potential Challenges)</p>
+          <table class="impact-table impact-table--neg">
+            <tbody>
+              <tr>
+                <th>à¤šà¥à¤¨à¥Œà¤¤à¥€</th>
+                <th>à¤•à¥ˆà¤¸à¤¾ à¤¦à¤¿à¤– à¤¸à¤•à¤¤à¤¾ à¤¹à¥ˆ</th>
+                <th>à¤šà¥à¤¨à¥Œà¤¤à¥€ à¤¸à¥‡ à¤•à¤¨à¥‡à¤•à¥à¤¶à¤¨</th>
+              </tr>
+              {% for row in ns.neg %}
+              <tr>
+                <td>{{ row.challenge }}</td>
+                <td>{{ row.appearance }}</td>
+                <td>{{ row.connection }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% elif section.key == "basic_life_path_context" and section.bullets %}
+          {% set ns = namespace(box='', meanings=[], comment='') %}
+          {% for bullet in section.bullets %}
+            {% if bullet.startswith("à¤œà¥€à¤µà¤¨ à¤ªà¤¥ à¤¬à¥‰à¤•à¥à¤¸:") %}
+              {% set ns.box = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("à¤†à¤ªà¤•à¥‡ à¤²à¤¿à¤ à¤…à¤°à¥à¤¥ ") %}
+              {% set ns.meanings = ns.meanings + [bullet.split(":", 1)[1].strip()] %}
+            {% elif bullet.startswith("à¤µà¥à¤¯à¤•à¥à¤¤à¤¿à¤—à¤¤ à¤Ÿà¤¿à¤ªà¥à¤ªà¤£à¥€:") %}
+              {% set ns.comment = bullet.split(":", 1)[1].strip() %}
+            {% endif %}
+          {% endfor %}
+
+          <pre class="context-box">{{ ns.box }}</pre>
+          <p class="section-subhead">à¤†à¤ªà¤•à¥‡ à¤²à¤¿à¤ à¤…à¤°à¥à¤¥:</p>
+          <div class="context-paras">
+            {% for item in ns.meanings %}
+            <p class="narrative">{{ item }}</p>
+            {% endfor %}
+          </div>
+          {% if ns.comment %}
+          <p class="narrative">{{ ns.comment }}</p>
+          {% endif %}
+          {% elif section.key == "basic_life_area_impact" and section.bullets %}
+          {% set ns = namespace(challenge='consistency', rows=[]) %}
+          {% for bullet in section.bullets %}
+            {% if bullet.startswith("LIFE_AREA_FOCUS:") %}
+              {% set ns.challenge = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("LIFE_AREA_ROW ") %}
+              {% set payload = bullet.split(":", 1)[1].strip() if ":" in bullet else "" %}
+              {% set parts = payload.split("|") %}
+              {% if parts|length >= 3 %}
+                {% set ns.rows = ns.rows + [{'area': parts[0].strip(), 'impact': parts[1].strip(), 'meaning': parts[2].strip()}] %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+
+          <p class="section-subhead">à¤†à¤ªà¤•à¥€ à¤ªà¥à¤°à¤¾à¤¥à¤®à¤¿à¤• à¤šà¥à¤¨à¥Œà¤¤à¥€ à¤•à¥‡ à¤†à¤§à¤¾à¤° à¤ªà¤°: <strong>"{{ ns.challenge }}"</strong></p>
+          <table class="impact-table impact-table--neg">
+            <tbody>
+              <tr>
+                <th>à¤œà¥€à¤µà¤¨ à¤•à¥à¤·à¥‡à¤¤à¥à¤°</th>
+                <th>à¤ªà¥à¤°à¤­à¤¾à¤µ</th>
+                <th>à¤†à¤ªà¤•à¥‡ à¤²à¤¿à¤ à¤…à¤°à¥à¤¥</th>
+              </tr>
+              {% for row in ns.rows %}
+              <tr>
+                <td>{{ row.area }}</td>
+                <td>{{ row.impact }}</td>
+                <td>{{ row.meaning }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% elif section.key == "basic_suggested_numbers" and section.bullets %}
+          {% set ns = namespace(intro='', options=[], steps=[]) %}
+          {% for bullet in section.bullets %}
+            {% if bullet.startswith("SUGGESTED_INTRO:") %}
+              {% set ns.intro = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("SUGGESTED_OPTION ") %}
+              {% set payload = bullet.split(":", 1)[1].strip() if ":" in bullet else "" %}
+              {% set parts = payload.split("||") %}
+              {% if parts|length >= 6 %}
+                {% set ns.options = ns.options + [{
+                  'title': parts[0].strip(),
+                  'pattern': parts[1].strip(),
+                  'vibration': parts[2].strip(),
+                  'key_digits': parts[3].strip(),
+                  'fills': parts[4].strip(),
+                  'reason': parts[5].strip()
+                }] %}
+              {% endif %}
+            {% elif bullet.startswith("SUGGESTED_STEP ") %}
+              {% set ns.steps = ns.steps + [bullet.split(":", 1)[1].strip()] %}
+            {% endif %}
+          {% endfor %}
+
+          <p class="narrative">{{ ns.intro }}</p>
+          {% for opt in ns.options %}
+          <p class="section-subhead" style="margin-top: 8px;">{{ opt.title }}</p>
+          <table class="impact-table impact-table--pos">
+            <tbody>
+              <tr><th>à¤•à¥à¤·à¥‡à¤¤à¥à¤°</th><th>à¤®à¥‚à¤²à¥à¤¯</th></tr>
+              <tr><td>à¤¸à¥à¤à¤¾à¤¯à¤¾ à¤—à¤¯à¤¾ à¤¨à¤‚à¤¬à¤° à¤ªà¥ˆà¤Ÿà¤°à¥à¤¨</td><td>{{ opt.pattern }}</td></tr>
+              <tr><td>à¤•à¥à¤² à¤…à¤‚à¤• (Vibration)</td><td>{{ opt.vibration }}</td></tr>
+              <tr><td>à¤ªà¥à¤°à¤®à¥à¤– à¤…à¤‚à¤• (Key Digits)</td><td>{{ opt.key_digits }}</td></tr>
+              <tr><td>à¤•à¤®à¤¿à¤¯à¤¾à¤ à¤ªà¥‚à¤°à¥€ à¤•à¤°à¤¤à¤¾ à¤¹à¥ˆ</td><td>{{ opt.fills }}</td></tr>
+            </tbody>
+          </table>
+          <p class="narrative"><strong>à¤•à¥à¤¯à¥‹à¤‚ à¤šà¥à¤¨à¥‡à¤‚:</strong> {{ opt.reason }}</p>
+          {% endfor %}
+
+          <p class="section-subhead">à¤¨à¤¯à¤¾ à¤¨à¤‚à¤¬à¤° à¤•à¥ˆà¤¸à¥‡ à¤²à¥‡à¤‚ (How to Get These Numbers)</p>
+          <table class="impact-table impact-table--pos">
+            <tbody>
+              <tr><th>à¤•à¤¦à¤®</th><th>à¤•à¤¾à¤°à¥à¤¯</th></tr>
+              {% for step in ns.steps %}
+              <tr><td>{{ loop.index }}</td><td>{{ step }}</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% elif section.key == "basic_charging_direction" and section.bullets %}
+          {% set ns = namespace(intro='', rows=[]) %}
+          {% for bullet in section.bullets %}
+            {% if bullet.startswith("CHARGING_INTRO:") %}
+              {% set ns.intro = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("CHARGING_ROW ") %}
+              {% set payload = bullet.split(":", 1)[1].strip() if ":" in bullet else "" %}
+              {% set parts = payload.split("|") %}
+              {% if parts|length >= 2 %}
+                {% set ns.rows = ns.rows + [{'practice': parts[0].strip(), 'method': parts[1].strip()}] %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          <p class="narrative">{{ ns.intro }}</p>
+          <table class="impact-table impact-table--pos">
+            <tbody>
+              <tr><th>à¤…à¤­à¥à¤¯à¤¾à¤¸</th><th>à¤µà¤¿à¤§à¤¿</th></tr>
+              {% for row in ns.rows %}
+              <tr>
+                <td>{{ row.practice }}</td>
+                <td>{{ row.method }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% elif section.key == "basic_remedies_table" and section.bullets %}
+          {% set ns = namespace(
+            intro='',
+            sp_title='',
+            sp_rows=[],
+            dg_title='',
+            dg_rows=[],
+            setup_title='',
+            setup_rows=[],
+            reset_title='',
+            reset_rows=[],
+            check_title='',
+            checks=[],
+            comment=''
+          ) %}
+          {% for bullet in section.bullets %}
+            {% if bullet.startswith("REMEDY_INTRO:") %}
+              {% set ns.intro = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("REMEDY_SP_TITLE:") %}
+              {% set ns.sp_title = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("REMEDY_SP_ROW ") %}
+              {% set payload = bullet.split(":", 1)[1].strip() if ":" in bullet else "" %}
+              {% set parts = payload.split("||") %}
+              {% if parts|length >= 3 %}
+                {% set ns.sp_rows = ns.sp_rows + [{'remedy': parts[0].strip(), 'action': parts[1].strip(), 'frequency': parts[2].strip()}] %}
+              {% endif %}
+            {% elif bullet.startswith("REMEDY_DG_TITLE:") %}
+              {% set ns.dg_title = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("REMEDY_DG_ROW ") %}
+              {% set payload = bullet.split(":", 1)[1].strip() if ":" in bullet else "" %}
+              {% set parts = payload.split("||") %}
+              {% if parts|length >= 3 %}
+                {% set ns.dg_rows = ns.dg_rows + [{'remedy': parts[0].strip(), 'action': parts[1].strip(), 'why': parts[2].strip()}] %}
+              {% endif %}
+            {% elif bullet.startswith("REMEDY_SETUP_TITLE:") %}
+              {% set ns.setup_title = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("REMEDY_SETUP_ROW ") %}
+              {% set payload = bullet.split(":", 1)[1].strip() if ":" in bullet else "" %}
+              {% set parts = payload.split("||") %}
+              {% if parts|length >= 2 %}
+                {% set ns.setup_rows = ns.setup_rows + [{'item': parts[0].strip(), 'recommendation': parts[1].strip()}] %}
+              {% endif %}
+            {% elif bullet.startswith("REMEDY_RESET_TITLE:") %}
+              {% set ns.reset_title = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("REMEDY_RESET_ROW ") %}
+              {% set payload = bullet.split(":", 1)[1].strip() if ":" in bullet else "" %}
+              {% set parts = payload.split("||") %}
+              {% if parts|length >= 2 %}
+                {% set ns.reset_rows = ns.reset_rows + [{'week': parts[0].strip(), 'actions': parts[1].strip()}] %}
+              {% endif %}
+            {% elif bullet.startswith("REMEDY_CHECK_TITLE:") %}
+              {% set ns.check_title = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("REMEDY_CHECK ") %}
+              {% set ns.checks = ns.checks + [bullet.split(":", 1)[1].strip()] %}
+            {% elif bullet.startswith("REMEDY_COMMENT:") %}
+              {% set ns.comment = bullet.split(":", 1)[1].strip() %}
+            {% endif %}
+          {% endfor %}
+          {% if ns.intro %}
+          <p class="narrative">{{ ns.intro }}</p>
+          {% endif %}
+          {% if ns.sp_title %}
+          <p class="section-subhead">{{ ns.sp_title }}</p>
+          {% endif %}
+          <table class="impact-table impact-table--pos">
+            <tbody>
+              <tr><th>à¤‰à¤ªà¤¾à¤¯</th><th>à¤•à¥à¤¯à¤¾ à¤•à¤°à¥‡à¤‚</th><th>à¤†à¤µà¥ƒà¤¤à¥à¤¤à¤¿</th></tr>
+              {% for row in ns.sp_rows %}
+              <tr>
+                <td>{{ row.remedy }}</td>
+                <td>{{ row.action }}</td>
+                <td>{{ row.frequency }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% if ns.dg_title %}
+          <p class="section-subhead" style="margin-top: 8px;">{{ ns.dg_title }}</p>
+          {% endif %}
+          <table class="impact-table impact-table--neg">
+            <tbody>
+              <tr><th>à¤‰à¤ªà¤¾à¤¯</th><th>à¤•à¥à¤¯à¤¾ à¤•à¤°à¥‡à¤‚</th><th>à¤•à¥à¤¯à¥‹à¤‚ à¤®à¤¦à¤¦à¤—à¤¾à¤°</th></tr>
+              {% for row in ns.dg_rows %}
+              <tr>
+                <td>{{ row.remedy }}</td>
+                <td>{{ row.action }}</td>
+                <td>{{ row.why }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% if ns.setup_title %}
+          <p class="section-subhead" style="margin-top: 8px;">{{ ns.setup_title }}</p>
+          {% endif %}
+          <table class="impact-table impact-table--pos">
+            <tbody>
+              <tr><th>Item</th><th>Your Recommendation</th></tr>
+              {% for row in ns.setup_rows %}
+              <tr>
+                <td>{{ row.item }}</td>
+                <td>{{ row.recommendation }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% if ns.reset_title %}
+          <p class="section-subhead" style="margin-top: 8px;">{{ ns.reset_title }}</p>
+          {% endif %}
+          <table class="impact-table impact-table--pos">
+            <tbody>
+              <tr><th>à¤¸à¤ªà¥à¤¤à¤¾à¤¹</th><th>Digital Actions</th></tr>
+              {% for row in ns.reset_rows %}
+              <tr>
+                <td>{{ row.week }}</td>
+                <td>{{ row.actions }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% if ns.check_title %}
+          <p class="section-subhead" style="margin-top: 8px;">{{ ns.check_title }}</p>
+          {% endif %}
+          {% if ns.checks %}
+          <ul class="bullets">
+            {% for check in ns.checks %}
+            <li>{{ check }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if ns.comment %}
+          <p class="narrative">{{ ns.comment }}</p>
+          {% endif %}
+          {% elif section.key == "basic_21_day_tracker" and section.bullets %}
+          {% set ns = namespace(rows=[]) %}
+          {% for bullet in section.bullets %}
+            {% if bullet.startswith("TRACKER_ROW ") %}
+              {% set payload = bullet.split(":", 1)[1].strip() if ":" in bullet else "" %}
+              {% set parts = payload.split("||") %}
+              {% if parts|length >= 3 %}
+                {% set ns.rows = ns.rows + [{'week': parts[0].strip(), 'task': parts[1].strip(), 'status': parts[2].strip()}] %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          <table class="impact-table impact-table--pos">
+            <tbody>
+              <tr><th>à¤¸à¤ªà¥à¤¤à¤¾à¤¹</th><th>à¤•à¤¾à¤°à¥à¤¯</th><th>à¤¸à¥à¤¥à¤¿à¤¤à¤¿</th></tr>
+              {% for row in ns.rows %}
+              <tr>
+                <td>{{ row.week }}</td>
+                <td>{{ row.task }}</td>
+                <td>{{ row.status }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% elif section.key == "basic_summary_table_v2" and section.bullets %}
+          {% set ns = namespace(rows=[]) %}
+          {% for bullet in section.bullets %}
+            {% if bullet.startswith("SUMMARY_ROW ") %}
+              {% set payload = bullet.split(":", 1)[1].strip() if ":" in bullet else "" %}
+              {% set parts = payload.split("||") %}
+              {% if parts|length >= 3 %}
+                {% set ns.rows = ns.rows + [{'field': parts[0].strip(), 'status': parts[1].strip(), 'suggestion': parts[2].strip()}] %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          <table class="impact-table impact-table--pos">
+            <tbody>
+              <tr><th>à¤•à¥à¤·à¥‡à¤¤à¥à¤°</th><th>à¤†à¤ªà¤•à¥€ à¤¸à¥à¤¥à¤¿à¤¤à¤¿</th><th>à¤¸à¥à¤à¤¾à¤µ</th></tr>
+              {% for row in ns.rows %}
+              <tr>
+                <td>{{ row.field }}</td>
+                <td>{{ row.status }}</td>
+                <td>{{ row.suggestion }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% elif section.key == "basic_key_insight" and section.bullets %}
+          {% set ns = namespace(p1='', p2='') %}
+          {% for bullet in section.bullets %}
+            {% if bullet.startswith("KEY_INSIGHT_P1:") %}
+              {% set ns.p1 = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("KEY_INSIGHT_P2:") %}
+              {% set ns.p2 = bullet.split(":", 1)[1].strip() %}
+            {% endif %}
+          {% endfor %}
+          {% if ns.p1 %}
+          <p class="narrative">{{ ns.p1 }}</p>
+          {% endif %}
+          {% if ns.p2 %}
+          <p class="narrative">{{ ns.p2 }}</p>
+          {% endif %}
+          {% elif section.key == "basic_upgrade_path" and section.bullets %}
+          {% set ns = namespace(rows=[], thanks='', context='', options=[], closing='', footers=[]) %}
+          {% for bullet in section.bullets %}
+            {% if bullet.startswith("NEXTSTEP_ROW ") %}
+              {% set payload = bullet.split(":", 1)[1].strip() if ":" in bullet else "" %}
+              {% set parts = payload.split("||") %}
+              {% if parts|length >= 2 %}
+                {% set ns.rows = ns.rows + [{'want': parts[0].strip(), 'upgrade': parts[1].strip()}] %}
+              {% endif %}
+            {% elif bullet.startswith("NEXTSTEP_THANKS:") %}
+              {% set ns.thanks = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("NEXTSTEP_CONTEXT:") %}
+              {% set ns.context = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("NEXTSTEP_OPTION ") %}
+              {% set ns.options = ns.options + [bullet.split(":", 1)[1].strip()] %}
+            {% elif bullet.startswith("NEXTSTEP_CLOSING:") %}
+              {% set ns.closing = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("NEXTSTEP_FOOTER ") %}
+              {% set ns.footers = ns.footers + [bullet.split(":", 1)[1].strip()] %}
+            {% endif %}
+          {% endfor %}
+          <table class="impact-table impact-table--pos">
+            <tbody>
+              <tr><th>à¤¯à¤¦à¤¿ à¤šà¤¾à¤¹à¥‡à¤‚</th><th>à¤…à¤ªà¤—à¥à¤°à¥‡à¤¡ à¤•à¤°à¥‡à¤‚</th></tr>
+              {% for row in ns.rows %}
+              <tr>
+                <td>{{ row.want }}</td>
+                <td>{{ row.upgrade }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% if ns.thanks %}
+          <p class="narrative" style="margin-top: 8px;"><strong>{{ ns.thanks }}</strong></p>
+          {% endif %}
+          {% if ns.context %}
+          <p class="narrative">{{ ns.context }}</p>
+          {% endif %}
+          {% if ns.options %}
+          <p class="section-subhead">à¤¤à¥€à¤¨ à¤µà¤¿à¤•à¤²à¥à¤ª à¤†à¤ªà¤•à¥‡ à¤¸à¤¾à¤®à¤¨à¥‡ à¤¹à¥ˆà¤‚:</p>
+          <ul class="bullets">
+            {% for item in ns.options %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if ns.closing %}
+          <p class="narrative">{{ ns.closing }}</p>
+          {% endif %}
+          {% for line in ns.footers %}
+          <p class="narrative"><strong>{{ line }}</strong></p>
+          {% endfor %}
+          {% elif section.key == "basic_keep_change_verdict" and section.bullets %}
+          {% set ns = namespace(box='', comment='') %}
+          {% for bullet in section.bullets %}
+            {% if bullet.startswith("VERDICT_BOX:") %}
+              {% set ns.box = bullet.split(":", 1)[1].strip() %}
+            {% elif bullet.startswith("VERDICT_COMMENT:") %}
+              {% set ns.comment = bullet.split(":", 1)[1].strip() %}
+            {% endif %}
+          {% endfor %}
+          <pre class="context-box">{{ ns.box }}</pre>
+          {% if ns.comment %}
+          <p class="narrative">{{ ns.comment }}</p>
+          {% endif %}
+          {% elif section.bullets %}
+          <ul class="bullets">
+            {% for bullet in section.bullets %}
+            <li>{{ bullet }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+          {% if section.diagram_svg %}
+          <div class="diagram">{{ section.diagram_svg | safe }}</div>
+          {% endif %}
+          {% endif %}
+        </article>
+      </div>
+      {% if watermark %}<div class="watermark">Preview</div>{% endif %}
+    </section>
+    {% endfor %}
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+  <script>
+    window.__numaiImageFallback = function (img) {
+      if (!img) {
+        return;
+      }
+      img.style.display = "none";
+      const fallback = img.parentElement
+        ? img.parentElement.querySelector(".image-fallback")
+        : null;
+      if (fallback) {
+        fallback.classList.remove("hidden");
+      }
+    };
+
+    window.__numaiReady = false;
+    (function renderRadarChart() {
+      const canvas = document.getElementById("radarChart");
+      if (!canvas) {
+        window.__numaiReady = true;
+        return;
+      }
+
+      const labels = {{ metrics.radar_labels_json | safe }};
+      const values = {{ metrics.radar_values_json | safe }};
+      const ctx = canvas.getContext("2d");
+
+      if (window.Chart) {
+        new Chart(ctx, {
+          type: "radar",
+          data: {
+            labels,
+            datasets: [{
+              data: values,
+              label: "à¤ªà¥à¤°à¤®à¥à¤– à¤¸à¤‚à¤•à¥‡à¤¤à¤• | Numerology Metrics",
+              borderColor: "#b88a2d",
+              backgroundColor: "rgba(184, 138, 45, 0.22)",
+              borderWidth: 2,
+              pointRadius: 2.2,
+              pointBackgroundColor: "#fdf5e3",
+              pointBorderColor: "#a9781d"
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              r: {
+                min: 0,
+                max: 100,
+                ticks: {
+                  stepSize: 20,
+                  color: "#7a6027",
+                  backdropColor: "transparent"
+                },
+                angleLines: { color: "rgba(122, 96, 39, 0.25)" },
+                grid: { color: "rgba(122, 96, 39, 0.25)" },
+                pointLabels: { color: "#5a4520", font: { size: 10 } }
+              }
+            }
+          }
+        });
+      } else {
+        ctx.fillStyle = "#6c5526";
+        ctx.font = "14px sans-serif";
+        ctx.fillText("Chart.js unavailable - fallback", 14, 24);
+      }
+      window.__numaiReady = true;
+    })();
+  </script>
+</body>
+</html>
+
+

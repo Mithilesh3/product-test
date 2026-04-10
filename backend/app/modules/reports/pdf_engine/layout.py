@@ -1,0 +1,8 @@
+from reportlab.lib.pagesizes import A4
+
+PAGE_WIDTH, PAGE_HEIGHT = A4
+
+LEFT_MARGIN = 60
+RIGHT_MARGIN = 60
+TOP_MARGIN = 80
+BOTTOM_MARGIN = 60

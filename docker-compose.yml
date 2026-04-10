@@ -1,0 +1,75 @@
+services:
+
+  # ==========================================
+  # PostgreSQL Database
+  # ==========================================
+  db:
+    image: postgres:15
+    container_name: lsn_db
+    restart: always
+
+    environment:
+      POSTGRES_USER: lsn_user
+      POSTGRES_PASSWORD: lsn_password
+      POSTGRES_DB: lsn_db
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lsn_user -d lsn_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+  # ==========================================
+  # FastAPI Backend
+  # ==========================================
+  backend:
+
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+
+    container_name: lsn_backend
+    restart: always
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+    ports:
+      - "8000:8000"
+
+    env_file:
+      - ./backend/.env
+
+    environment:
+      PYTHONUNBUFFERED: 1
+      PYTHONDONTWRITEBYTECODE: 1
+      PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+
+    volumes:
+
+      # backend source code
+      - ./backend:/app
+
+      # assets required for PDF rendering
+      - ./backend/app/assets:/app/app/assets
+
+      # optional logs folder
+      - ./backend/logs:/app/logs
+
+    command: >
+      uvicorn app.main:app
+      --host 0.0.0.0
+      --port 8000
+      --reload
+
+
+volumes:
+  postgres_data:

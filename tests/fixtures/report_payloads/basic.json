@@ -1,0 +1,28 @@
+{
+  "identity": {
+    "full_name": "Rahul Sharma",
+    "date_of_birth": "1993-08-15",
+    "gender": "male",
+    "country_of_residence": "India",
+    "email": "rahul@example.com"
+  },
+  "birth_details": {
+    "date_of_birth": "1993-08-15",
+    "birthplace_city": "Delhi",
+    "birthplace_country": "India"
+  },
+  "focus": {
+    "life_focus": "general_alignment"
+  },
+  "contact": {
+    "mobile_number": "9876543210"
+  },
+  "preferences": {
+    "language_preference": "hindi",
+    "profession": "Technology",
+    "relationship_status": "single",
+    "career_type": "job",
+    "primary_goal": "career growth and stability"
+  },
+  "current_problem": "career growth and stability"
+}

@@ -1,0 +1,404 @@
+/* Scoped responsive overrides for /login page flow (CosmicLogin + sections below). */
+
+/* Seam fix between stacked login sections (Page 1 -> 2 -> 3 -> 4 -> 5) */
+.auth-cosmic-shell,
+.dhyanam-section,
+.number-section,
+.site-footer {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+.auth-cosmic-shell {
+  padding-bottom: 0 !important;
+}
+
+/* Remove legacy horizontal separator effects injected by old CSS */
+.dhyanam-section::before,
+.dhyanam-section::after {
+  display: none !important;
+  content: none !important;
+}
+
+.site-footer::before,
+.site-footer::after {
+  pointer-events: none;
+}
+
+.footer-divider {
+  border-top-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+@media (max-width: 1200px) {
+  .auth-cosmic-shell {
+    min-height: auto !important;
+    padding: 24px 16px 44px !important;
+  }
+
+  .auth-shell-right {
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+    padding-right: 0 !important;
+    align-items: center !important;
+  }
+
+  .auth-brand-card,
+  .auth-login-panel {
+    width: 100%;
+    max-width: 620px;
+  }
+
+  .auth-om-symbol {
+    left: 50% !important;
+    top: 58% !important;
+    font-size: clamp(180px, 26vw, 320px) !important;
+    opacity: 0.16;
+  }
+
+  .solar-core,
+  .solar-orbit {
+    left: 50% !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .solar-orbit-4,
+  .solar-orbit-5,
+  .solar-planet-ice,
+  .solar-comet {
+    display: none !important;
+  }
+
+  .auth-shell-right {
+    margin-top: 8px !important;
+  }
+
+  .auth-brand-title {
+    font-size: 30px !important;
+  }
+
+  .brand-logo {
+    width: 72px !important;
+    height: 72px !important;
+  }
+
+  .auth-login-panel {
+    padding: 20px !important;
+  }
+
+  .dhyanam-section {
+    min-height: auto !important;
+    padding: 52px 16px !important;
+  }
+
+  .dhyanam-container {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    max-width: 760px !important;
+    width: 100%;
+  }
+
+  .dhyanam-left,
+  .dhyanam-right {
+    width: 100%;
+    max-width: none !important;
+    margin: 0 !important;
+    align-items: stretch !important;
+    justify-self: stretch !important;
+    text-align: left !important;
+  }
+
+  .dhyanam-left h2 {
+    font-size: clamp(34px, 5.4vw, 46px) !important;
+    line-height: 1.16 !important;
+    max-width: none !important;
+  }
+
+  .dhyanam-center {
+    width: 100%;
+    min-height: 0 !important;
+  }
+
+  .breathing-overlay {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .site-footer {
+    margin-top: 0 !important;
+    padding: 44px 18px !important;
+  }
+
+  .site-footer .footer-about {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .site-footer .footer-about-heading {
+    font-size: clamp(30px, 5vw, 40px) !important;
+  }
+
+  .site-footer .footer-about-copy p {
+    font-size: clamp(16px, 2.3vw, 20px) !important;
+  }
+
+  .site-footer .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 22px !important;
+  }
+
+  .site-footer .footer-youtube-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .site-footer .footer-youtube-frame-wrap iframe {
+    min-height: 220px !important;
+  }
+
+  .number-section {
+    padding: 64px 16px !important;
+  }
+
+  .num-card {
+    padding: 26px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .auth-cosmic-shell {
+    min-height: auto !important;
+    padding: 14px 12px 28px !important;
+  }
+
+  .auth-shell-right {
+    margin-top: 0 !important;
+    max-width: none !important;
+  }
+
+  .auth-brand-card {
+    border-radius: 12px !important;
+    padding: 8px 10px 9px !important;
+  }
+
+  .brand-header {
+    justify-content: center !important;
+    padding-left: 0 !important;
+    gap: 10px !important;
+  }
+
+  .brand-logo {
+    width: 54px !important;
+    height: 54px !important;
+  }
+
+  .auth-brand-title {
+    font-size: 21px !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;
+    text-align: center;
+  }
+
+  .auth-login-panel {
+    border-radius: 16px !important;
+    padding: 16px !important;
+  }
+
+  .auth-header {
+    gap: 8px !important;
+    flex-wrap: wrap;
+  }
+
+  .auth-kicker {
+    font-size: 11px !important;
+    letter-spacing: 1.2px !important;
+  }
+
+  .auth-badge {
+    font-size: 10px !important;
+    padding: 4px 9px !important;
+  }
+
+  .auth-card-title {
+    font-size: 34px !important;
+    margin-top: 4px !important;
+  }
+
+  .auth-subtitle {
+    margin-bottom: 14px !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  .auth-form {
+    gap: 10px !important;
+  }
+
+  .auth-input,
+  .auth-button,
+  .auth-create-btn {
+    font-size: 15px !important;
+    padding: 12px !important;
+  }
+
+  .auth-om-symbol,
+  .solar-orbit,
+  .solar-core,
+  .solar-nebula,
+  .numerology-floaters,
+  .solar-planet-jupiter,
+  .solar-planet-saturn {
+    display: none !important;
+  }
+
+  .solar-stars-layer {
+    opacity: 0.32 !important;
+  }
+
+  .dhyanam-section {
+    padding: 40px 12px !important;
+  }
+
+  .dhyanam-left h2 {
+    font-size: clamp(28px, 9vw, 36px) !important;
+    line-height: 1.14 !important;
+  }
+
+  .dhyanam-left p,
+  .dhyanam-quote,
+  .dhyanam-breath,
+  .dhyanam-hint {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+  }
+
+  .dhyanam-right-heading {
+    text-align: center !important;
+  }
+
+  .dhyanam-mode-btn {
+    width: 100% !important;
+  }
+
+  .breathing-overlay {
+    border-radius: 14px !important;
+    padding: 14px !important;
+  }
+
+  .chakra-flow {
+    display: none !important;
+  }
+
+  .om-particles {
+    opacity: 0.5 !important;
+  }
+
+  .number-section {
+    padding: 48px 12px !important;
+  }
+
+  .num-card {
+    padding: 18px !important;
+    border-radius: 12px !important;
+  }
+
+  .num-card h2 {
+    font-size: 23px !important;
+  }
+
+  .num-form {
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+  }
+
+  .num-form input,
+  .num-form button {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .site-footer {
+    padding: 34px 12px !important;
+  }
+
+  .site-footer .footer-about-heading {
+    font-size: clamp(26px, 8vw, 34px) !important;
+    margin-bottom: 12px !important;
+  }
+
+  .site-footer .footer-about-copy p {
+    font-size: 15px !important;
+    margin-bottom: 10px !important;
+    line-height: 1.58 !important;
+  }
+
+  .site-footer .footer-youtube-title,
+  .site-footer .footer-youtube-link {
+    text-align: left !important;
+  }
+
+  .site-footer .footer-youtube-frame-wrap {
+    padding: 8px !important;
+  }
+
+  .site-footer .footer-youtube-frame-wrap iframe {
+    min-height: 190px !important;
+  }
+
+  .site-footer .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .site-footer .footer-col h4 {
+    font-size: 15px !important;
+  }
+
+  .site-footer .footer-col li,
+  .site-footer .footer-col p {
+    font-size: 13px !important;
+  }
+
+  .site-footer .social-icons {
+    gap: 10px !important;
+  }
+
+  .site-footer .social-icons a {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 14px !important;
+  }
+
+  .footer-bottom {
+    margin-top: 18px !important;
+    font-size: 12px !important;
+  }
+
+  .whatsapp-float {
+    width: 50px !important;
+    height: 50px !important;
+    right: 14px !important;
+    bottom: 14px !important;
+    font-size: 10px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .auth-card-title {
+    font-size: 31px !important;
+  }
+
+  .field-label {
+    font-size: 11px !important;
+    letter-spacing: 1.2px !important;
+  }
+
+  .site-footer .footer-youtube-frame-wrap iframe {
+    min-height: 170px !important;
+  }
+}

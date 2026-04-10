@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ cover.title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    {% if assets.deva_font_regular %}
+    @font-face {
+      font-family: "LocalNotoDeva";
+      src: url("{{ assets.deva_font_regular }}") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    {% endif %}
+
+    {% if assets.deva_font_bold %}
+    @font-face {
+      font-family: "LocalNotoDeva";
+      src: url("{{ assets.deva_font_bold }}") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    {% endif %}
+
+    :root {
+      --bg-0: #f7fbff;
+      --bg-1: #eef5ff;
+      --bg-2: #e4eefb;
+      --font-heading: Georgia, "Times New Roman", serif;
+      --gold-0: #b28a43;
+      --gold-1: #8f6c31;
+      --gold-2: #6f5224;
+      --ink-0: #122a4a;
+      --ink-1: #26446d;
+      --ink-2: #4a6588;
+      --card: rgba(255, 255, 255, 0.93);
+      --line: rgba(177, 142, 76, 0.48);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    body {
+      margin: 0;
+      background: #ecf3fc;
+      color: var(--ink-0);
+      font-family: "LocalNotoDeva", "Noto Sans Devanagari", "Inter", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
+
+    .report-root {
+      width: 210mm;
+      margin: 0 auto;
+    }
+
+    .page {
+      position: relative;
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 13mm 14mm;
+      page-break-after: always;
+      background:
+        radial-gradient(95% 80% at 50% 50%, rgba(183, 199, 226, 0.2), transparent 70%),
+        radial-gradient(70% 55% at 100% 0%, rgba(191, 208, 235, 0.24), transparent 66%),
+        linear-gradient(165deg, var(--bg-0), var(--bg-1) 54%, var(--bg-2));
+      overflow: hidden;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+    }
+
+    .page::before,
+    .page::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(178, 138, 67, 0.18);
+      border-radius: 999px;
+      pointer-events: none;
+    }
+
+    .page::before {
+      width: 260px;
+      height: 260px;
+      top: -110px;
+      right: -90px;
+    }
+
+    .page::after {
+      width: 320px;
+      height: 320px;
+      left: -180px;
+      bottom: -180px;
+    }
+
+    .watermark {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Cinzel", serif;
+      font-size: 62px;
+      letter-spacing: 10px;
+      color: rgba(94, 114, 149, 0.14);
+      transform: rotate(-24deg);
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+    }
+
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 7mm;
+      color: var(--ink-2);
+      font-size: 10.5px;
+      letter-spacing: 0.35px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(26, 62, 112, 0.18));
+    }
+
+    .section-title {
+      margin: 0;
+      color: var(--gold-0);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 1.18;
+      letter-spacing: 0.45px;
+    }
+
+    .section-subtitle {
+      margin: 2.5mm 0 4mm;
+      color: var(--ink-1);
+      font-size: 12.6px;
+      line-height: 1.46;
+    }
+
+    .section-kicker {
+      margin: 0 0 2mm;
+      color: var(--gold-1);
+      font-weight: 600;
+      font-size: 10.6px;
+      letter-spacing: 0.65px;
+      text-transform: uppercase;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 8px 10px;
+      box-shadow: 0 6px 18px rgba(24, 46, 78, 0.08);
+      overflow-wrap: anywhere;
+    }
+
+    .card h4 {
+      margin: 0 0 4px;
+      font-family: "Cinzel", serif;
+      font-size: 13.2px;
+      color: var(--gold-0);
+      font-weight: 600;
+      line-height: 1.28;
+    }
+
+    .card p,
+    .card li {
+      margin: 0;
+      color: var(--ink-1);
+      font-size: 11.6px;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .hero {
+      margin-top: 25mm;
+      text-align: center;
+    }
+
+    .hero .hindi {
+      margin: 0;
+      font-size: 20px;
+      color: var(--gold-0);
+      letter-spacing: 0.35px;
+      line-height: 1.4;
+    }
+
+    .hero .english {
+      margin: 3.4mm 0 1mm;
+      font-family: var(--font-heading);
+      font-size: 34px;
+      line-height: 1.15;
+      color: var(--ink-0);
+    }
+
+    .hero .sub {
+      margin: 0;
+      font-size: 13px;
+      color: #4f688a;
+      letter-spacing: 0.25px;
+    }
+
+    .identity {
+      margin-top: 15mm;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .identity .card p {
+      font-size: 13px;
+    }
+
+    .value {
+      color: var(--ink-0);
+      font-weight: 700;
+    }
+
+    .risk-band {
+      display: inline-flex;
+      margin-top: 2mm;
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(177, 142, 76, 0.65);
+      background: rgba(241, 231, 206, 0.95);
+      color: #725421;
+      font-size: 11.6px;
+      font-weight: 600;
+    }
+
+    .narrative {
+      margin-top: 6px;
+      color: var(--ink-1);
+      font-size: 12px;
+      line-height: 1.54;
+      overflow-wrap: anywhere;
+    }
+
+    .diagram-shell {
+      margin-top: 7px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 6px;
+    }
+
+    .diagram-shell svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .diagram-shell.compact svg {
+      max-height: 182px;
+    }
+
+    .diagram-shell.loshu svg {
+      max-height: 168px;
+    }
+
+    .metric-grid {
+      margin-top: 6px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+    }
+
+    .metric-card {
+      border-radius: 11px;
+      border: 1px solid var(--line);
+      background: rgba(242, 248, 255, 0.96);
+      padding: 7px 8px;
+    }
+
+    .metric-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 3px;
+      gap: 4px;
+    }
+
+    .metric-name {
+      font-size: 11px;
+      color: var(--ink-1);
+      font-weight: 600;
+      line-height: 1.34;
+    }
+
+    .metric-score {
+      font-family: "Cinzel", serif;
+      color: var(--gold-0);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .metric-status {
+      font-size: 10px;
+      color: var(--gold-1);
+      margin-bottom: 2px;
+      line-height: 1.35;
+    }
+
+    .metric-copy {
+      font-size: 10.3px;
+      line-height: 1.42;
+      color: var(--ink-2);
+      overflow-wrap: anywhere;
+    }
+
+    .chart-shell {
+      height: 200px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(247, 252, 255, 0.98);
+      padding: 8px;
+      margin-bottom: 6px;
+    }
+
+    .tag-list {
+      margin: 6px 0 0;
+      padding-left: 17px;
+      color: var(--ink-1);
+      font-size: 11px;
+      line-height: 1.42;
+    }
+
+    .flow-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 7px;
+    }
+
+    .footer-note {
+      margin-top: 5mm;
+      color: var(--ink-2);
+      font-size: 10.2px;
+      letter-spacing: 0.25px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="report-root">
+    <section class="page">
+      {% if watermark %}<div class="watermark">Preview</div>{% endif %}
+      <div class="content">
+        <div class="topline">
+          <div class="brand">
+            {% if assets.brand_logo_uri %}<img src="{{ assets.brand_logo_uri }}" alt="NumAI logo" />{% endif %}
+            <span>NumAI Strategic Intelligence Engine v{{ meta.version }}</span>
+          </div>
+          <span>{{ meta.report_date }}</span>
+        </div>
+
+        <div class="hero">
+          <p class="hindi">रणनीतिक जीवन इंटेलिजेंस ऑडिट</p>
+          <h1 class="english">{{ cover.title }}</h1>
+          <p class="sub">{{ cover.subtitle }}</p>
+        </div>
+
+        <div class="identity">
+          <div class="card"><h4>क्लाइंट | Client</h4><p class="value">{{ cover.name }}</p></div>
+          <div class="card"><h4>जन्म तिथि | Date of Birth</h4><p class="value">{{ cover.dob }}</p></div>
+          <div class="card"><h4>रिस्क बैंड | Risk Band</h4><p><span class="risk-band">{{ cover.risk_band }}</span></p></div>
+          <div class="card"><h4>प्लान टियर | Plan Tier</h4><p class="value">{{ meta.plan }}</p></div>
+        </div>
+
+        <p class="footer-note">Generated by deterministic numerology + interpretation + AI narrative orchestration</p>
+      </div>
+    </section>
+
+    {% for page in premium_report.section_pages %}
+    <section class="page">
+      {% if watermark %}<div class="watermark">Preview</div>{% endif %}
+      <div class="content">
+        <div class="topline">
+          <span>पृष्ठ {{ page.page_number }}</span>
+          <span>प्रीमियम रिपोर्ट</span>
+        </div>
+        <p class="section-kicker">विस्तृत विश्लेषण</p>
+        <h2 class="section-title">{{ page.section.title }}</h2>
+        {% if page.section.subtitle %}
+        <p class="section-subtitle">{{ page.section.subtitle }}</p>
+        {% endif %}
+
+        {% if page.section.profile_fields %}
+        <div class="grid-2">
+          {% for item in page.section.profile_fields %}
+          <div class="card"><h4>{{ item.label }}</h4><p>{{ item.value }}</p></div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if page.section.cards %}
+        <div class="grid-2" style="margin-top: 8px;">
+          {% for card in page.section.cards %}
+          <div class="card"><h4>{{ card.label }}</h4><p>{{ card.value }}</p></div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if page.section.bullets %}
+        <ul class="tag-list">
+          {% for item in page.section.bullets %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if page.section.narrative %}
+        <p class="narrative">{{ page.section.narrative }}</p>
+        {% endif %}
+      </div>
+    </section>
+    {% endfor %}
+  </div>
+</body>
+</html>

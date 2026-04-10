@@ -1,0 +1,507 @@
+{
+    "problemCategoryPolicy":  {
+                                  "finance":  {
+                                                  "focusTokens":  [
+                                                                      "debt",
+                                                                      "loan",
+                                                                      "cashflow",
+                                                                      "savings",
+                                                                      "emi",
+                                                                      "budget",
+                                                                      "financial discipline"
+                                                                  ],
+                                                  "mustInclude":  [
+                                                                      "cash-protection discipline",
+                                                                      "weekly money review cadence"
+                                                                  ],
+                                                  "avoidWhenPrimary":  [
+
+                                                                       ]
+                                              },
+                                  "career":  {
+                                                 "focusTokens":  [
+                                                                     "career",
+                                                                     "job",
+                                                                     "work",
+                                                                     "interview",
+                                                                     "promotion",
+                                                                     "execution",
+                                                                     "growth"
+                                                                 ],
+                                                 "mustInclude":  [
+                                                                     "daily execution priorities",
+                                                                     "outcome review cadence"
+                                                                 ],
+                                                 "avoidWhenPrimary":  [
+                                                                          "debt-only remedy framing",
+                                                                          "loan-first framing when not requested"
+                                                                      ]
+                                             },
+                                  "business":  {
+                                                   "focusTokens":  [
+                                                                       "business",
+                                                                       "revenue",
+                                                                       "sales",
+                                                                       "client",
+                                                                       "execution",
+                                                                       "follow-up"
+                                                                   ],
+                                                   "mustInclude":  [
+                                                                       "revenue quality review",
+                                                                       "follow-up discipline",
+                                                                       "decision cadence"
+                                                                   ],
+                                                   "avoidWhenPrimary":  [
+                                                                            "debt-only remedy framing",
+                                                                            "loan-first framing when not requested"
+                                                                        ]
+                                               },
+                                  "relationship":  {
+                                                       "focusTokens":  [
+                                                                           "relationship",
+                                                                           "partner",
+                                                                           "marriage",
+                                                                           "communication",
+                                                                           "clarity"
+                                                                       ],
+                                                       "mustInclude":  [
+                                                                           "communication cadence",
+                                                                           "conflict reset protocol",
+                                                                           "weekly relationship review"
+                                                                       ],
+                                                       "avoidWhenPrimary":  [
+                                                                                "debt-only remedy framing",
+                                                                                "finance-only corrective plan"
+                                                                            ]
+                                                   },
+                                  "health":  {
+                                                 "focusTokens":  [
+                                                                     "health",
+                                                                     "stress",
+                                                                     "sleep",
+                                                                     "energy",
+                                                                     "routine"
+                                                                 ],
+                                                 "mustInclude":  [
+                                                                     "sleep rhythm protocol",
+                                                                     "stress reset routine",
+                                                                     "energy tracking"
+                                                                 ],
+                                                 "avoidWhenPrimary":  [
+                                                                          "debt-only remedy framing",
+                                                                          "finance-only corrective plan"
+                                                                      ]
+                                             },
+                                  "education":  {
+                                                    "focusTokens":  [
+                                                                        "education",
+                                                                        "study",
+                                                                        "exam",
+                                                                        "revision",
+                                                                        "learning"
+                                                                    ],
+                                                    "mustInclude":  [
+                                                                        "study rhythm",
+                                                                        "revision checkpoints",
+                                                                        "weekly performance review"
+                                                                    ],
+                                                    "avoidWhenPrimary":  [
+                                                                             "debt-only remedy framing",
+                                                                             "finance-only corrective plan"
+                                                                         ]
+                                                },
+                                  "confidence":  {
+                                                     "focusTokens":  [
+                                                                         "confidence",
+                                                                         "visibility",
+                                                                         "hesitation",
+                                                                         "self-expression",
+                                                                         "communication"
+                                                                     ],
+                                                     "mustInclude":  [
+                                                                         "small visible actions",
+                                                                         "decision-confidence routine"
+                                                                     ],
+                                                     "avoidWhenPrimary":  [
+                                                                              "debt-only remedy framing",
+                                                                              "cashflow-only advice"
+                                                                          ]
+                                                 },
+                                  "consistency":  {
+                                                      "focusTokens":  [
+                                                                          "consistency",
+                                                                          "discipline",
+                                                                          "routine",
+                                                                          "focus",
+                                                                          "procrastination"
+                                                                      ],
+                                                      "mustInclude":  [
+                                                                          "no-skip routine protocol",
+                                                                          "weekly reset structure"
+                                                                      ],
+                                                      "avoidWhenPrimary":  [
+                                                                               "debt-only remedy framing",
+                                                                               "finance-only corrective plan"
+                                                                           ]
+                                                  },
+                                  "spiritual":  {
+                                                    "focusTokens":  [
+                                                                        "spiritual",
+                                                                        "meditation",
+                                                                        "purpose",
+                                                                        "inner",
+                                                                        "balance"
+                                                                    ],
+                                                    "mustInclude":  [
+                                                                        "daily grounding practice",
+                                                                        "weekly reflection cadence"
+                                                                    ],
+                                                    "avoidWhenPrimary":  [
+                                                                             "debt-only remedy framing",
+                                                                             "finance-only corrective plan"
+                                                                         ]
+                                                },
+                                  "general":  {
+                                                  "focusTokens":  [
+                                                                      "current problem",
+                                                                      "primary challenge",
+                                                                      "execution",
+                                                                      "measurable progress"
+                                                                  ],
+                                                  "mustInclude":  [
+                                                                      "challenge-specific actions",
+                                                                      "21-day measurable protocol"
+                                                                  ],
+                                                  "avoidWhenPrimary":  [
+                                                                           "template-only generic remedy bundle"
+                                                                       ]
+                                              }
+                              },
+    "problemCategoryDomainRules":  {
+                                       "finance":  {
+                                                       "mustInclude":  [
+                                                                           "cash-protection discipline",
+                                                                           "debt-reduction cadence",
+                                                                           "weekly financial review"
+                                                                       ],
+                                                       "mustAvoid":  [
+
+                                                                     ]
+                                                   },
+                                       "career":  {
+                                                      "mustInclude":  [
+                                                                          "execution priorities",
+                                                                          "outcome-driven weekly review",
+                                                                          "skill-output alignment"
+                                                                      ],
+                                                      "mustAvoid":  [
+                                                                        "debt-only remedy framing",
+                                                                        "loan-first correction when challenge is not debt"
+                                                                    ]
+                                                  },
+                                       "business":  {
+                                                        "mustInclude":  [
+                                                                            "revenue-quality review",
+                                                                            "decision discipline",
+                                                                            "execution cadence"
+                                                                        ],
+                                                        "mustAvoid":  [
+                                                                          "debt-only remedy framing"
+                                                                      ]
+                                                    },
+                                       "confidence":  {
+                                                          "mustInclude":  [
+                                                                              "visibility reps",
+                                                                              "decision-confidence loop",
+                                                                              "small daily action protocol"
+                                                                          ],
+                                                          "mustAvoid":  [
+                                                                            "debt-only remedy framing",
+                                                                            "finance-only corrective framing"
+                                                                        ]
+                                                      },
+                                       "consistency":  {
+                                                           "mustInclude":  [
+                                                                               "no-skip routine",
+                                                                               "friction removal",
+                                                                               "weekly reset checkpoint"
+                                                                           ],
+                                                           "mustAvoid":  [
+                                                                             "debt-only remedy framing",
+                                                                             "finance-only corrective framing"
+                                                                         ]
+                                                       },
+                                       "relationship":  {
+                                                            "mustInclude":  [
+                                                                                "communication cadence",
+                                                                                "emotional regulation protocol",
+                                                                                "relationship clarity actions"
+                                                                            ],
+                                                            "mustAvoid":  [
+                                                                              "debt-only remedy framing"
+                                                                          ]
+                                                        },
+                                       "health":  {
+                                                      "mustInclude":  [
+                                                                          "stress-regulation routine",
+                                                                          "daily rhythm correction",
+                                                                          "energy-preserving decisions"
+                                                                      ],
+                                                      "mustAvoid":  [
+                                                                        "debt-only remedy framing"
+                                                                    ]
+                                                  },
+                                       "education":  {
+                                                         "mustInclude":  [
+                                                                             "study rhythm",
+                                                                             "revision checkpoints",
+                                                                             "performance tracking"
+                                                                         ],
+                                                         "mustAvoid":  [
+                                                                           "debt-only remedy framing"
+                                                                       ]
+                                                     },
+                                       "spiritual":  {
+                                                         "mustInclude":  [
+                                                                             "inner stability practice",
+                                                                             "grounded ritual discipline",
+                                                                             "reflection cadence"
+                                                                         ],
+                                                         "mustAvoid":  [
+                                                                           "debt-only remedy framing"
+                                                                       ]
+                                                     }
+                                   },
+    "problemCategoryKeywords":  {
+                                    "finance":  [
+                                                    "debt",
+                                                    "loan",
+                                                    "emi",
+                                                    "money",
+                                                    "finance",
+                                                    "financial",
+                                                    "cash",
+                                                    "income",
+                                                    "expense",
+                                                    "savings",
+                                                    "investment",
+                                                    "loss",
+                                                    "credit",
+                                                    "budget",
+                                                    "karz",
+                                                    "rin",
+                                                    "vitt",
+                                                    "dhan"
+                                                ],
+                                    "relationship":  [
+                                                         "relationship",
+                                                         "marriage",
+                                                         "partner",
+                                                         "husband",
+                                                         "wife",
+                                                         "love",
+                                                         "breakup",
+                                                         "divorce",
+                                                         "compatibility",
+                                                         "communication",
+                                                         "bond"
+                                                     ],
+                                    "education":  [
+                                                      "exam",
+                                                      "study",
+                                                      "education",
+                                                      "college",
+                                                      "school",
+                                                      "learning",
+                                                      "course",
+                                                      "grade",
+                                                      "test",
+                                                      "revision",
+                                                      "student"
+                                                  ],
+                                    "health":  [
+                                                   "health",
+                                                   "sleep",
+                                                   "weight",
+                                                   "fitness",
+                                                   "pain",
+                                                   "stress",
+                                                   "stressed",
+                                                   "stressful",
+                                                   "anxiety",
+                                                   "depression",
+                                                   "illness",
+                                                   "disease",
+                                                   "wellness",
+                                                   "balance"
+                                               ],
+                                    "business":  [
+                                                     "business",
+                                                     "startup",
+                                                     "client",
+                                                     "revenue",
+                                                     "sales",
+                                                     "profit",
+                                                     "brand",
+                                                     "market",
+                                                     "entrepreneur",
+                                                     "team",
+                                                     "alignment",
+                                                     "operations"
+                                                 ],
+                                    "career":  [
+                                                   "career",
+                                                   "job",
+                                                   "work",
+                                                   "promotion",
+                                                   "office",
+                                                   "interview",
+                                                   "manager",
+                                                   "execution",
+                                                   "decision",
+                                                   "quality",
+                                                   "work life"
+                                               ],
+                                    "confidence":  [
+                                                       "confidence",
+                                                       "self doubt",
+                                                       "self-doubt",
+                                                       "fear",
+                                                       "hesitation",
+                                                       "visibility",
+                                                       "public speaking",
+                                                       "communication",
+                                                       "self expression"
+                                                   ],
+                                    "consistency":  [
+                                                        "consistency",
+                                                        "discipline",
+                                                        "routine",
+                                                        "habit",
+                                                        "focus",
+                                                        "procrastination",
+                                                        "follow through",
+                                                        "follow-through",
+                                                        "execution rhythm"
+                                                    ],
+                                    "spiritual":  [
+                                                      "spiritual",
+                                                      "mantra",
+                                                      "meditation",
+                                                      "peace",
+                                                      "purpose",
+                                                      "inner",
+                                                      "dharma"
+                                                  ]
+                                },
+    "problemCategoryPriority":  [
+                                    "finance",
+                                    "relationship",
+                                    "education",
+                                    "health",
+                                    "business",
+                                    "career",
+                                    "confidence",
+                                    "consistency",
+                                    "spiritual"
+                                ],
+    "problemCategoryAnchors":  {
+                                   "finance":  [
+                                                   "finance",
+                                                   "financial",
+                                                   "money",
+                                                   "cashflow",
+                                                   "debt",
+                                                   "loan",
+                                                   "budget",
+                                                   "emi",
+                                                   "discipline",
+                                                   "karz",
+                                                   "rin"
+                                               ],
+                                   "career":  [
+                                                  "career",
+                                                  "job",
+                                                  "work",
+                                                  "execution",
+                                                  "promotion",
+                                                  "interview",
+                                                  "decision",
+                                                  "quality",
+                                                  "work life",
+                                                  "alignment"
+                                              ],
+                                   "business":  [
+                                                    "business",
+                                                    "revenue",
+                                                    "sales",
+                                                    "client",
+                                                    "profit",
+                                                    "market",
+                                                    "team",
+                                                    "alignment",
+                                                    "operations"
+                                                ],
+                                   "confidence":  [
+                                                      "confidence",
+                                                      "hesitation",
+                                                      "visibility",
+                                                      "self",
+                                                      "expression",
+                                                      "public speaking"
+                                                  ],
+                                   "consistency":  [
+                                                       "consistency",
+                                                       "routine",
+                                                       "discipline",
+                                                       "focus",
+                                                       "habit",
+                                                       "execution rhythm"
+                                                   ],
+                                   "relationship":  [
+                                                        "relationship",
+                                                        "partner",
+                                                        "marriage",
+                                                        "communication",
+                                                        "bond",
+                                                        "clarity"
+                                                    ],
+                                   "health":  [
+                                                  "health",
+                                                  "stress",
+                                                  "sleep",
+                                                  "anxiety",
+                                                  "energy",
+                                                  "wellness",
+                                                  "balance"
+                                              ],
+                                   "education":  [
+                                                     "study",
+                                                     "exam",
+                                                     "learning",
+                                                     "education",
+                                                     "revision",
+                                                     "performance"
+                                                 ],
+                                   "general":  [
+                                                   "challenge",
+                                                   "problem",
+                                                   "execution",
+                                                   "progress",
+                                                   "stability",
+                                                   "alignment"
+                                               ]
+                               },
+    "financeDriftTokens":  [
+                               "debt",
+                               "loan",
+                               "emi",
+                               "credit",
+                               "cashflow",
+                               "budget",
+                               "karz",
+                               "rin",
+                               "finance",
+                               "financial"
+                           ]
+}

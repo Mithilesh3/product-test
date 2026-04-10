@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ cover.title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    {% if assets.deva_font_regular %}
+    @font-face {
+      font-family: "LocalNotoDeva";
+      src: url("{{ assets.deva_font_regular }}") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    {% endif %}
+
+    {% if assets.deva_font_bold %}
+    @font-face {
+      font-family: "LocalNotoDeva";
+      src: url("{{ assets.deva_font_bold }}") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    {% endif %}
+
+    :root {
+      --bg-0: #f7fbff;
+      --bg-1: #eef5ff;
+      --bg-2: #e4eefb;
+      --font-heading: Georgia, "Times New Roman", serif;
+      --gold-0: #b28a43;
+      --gold-1: #8f6c31;
+      --gold-2: #6f5224;
+      --ink-0: #122a4a;
+      --ink-1: #26446d;
+      --ink-2: #4a6588;
+      --card: rgba(255, 255, 255, 0.93);
+      --line: rgba(177, 142, 76, 0.48);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    body {
+      margin: 0;
+      background: #ecf3fc;
+      color: var(--ink-0);
+      font-family: "LocalNotoDeva", "Noto Sans Devanagari", "Inter", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
+
+    .report-root {
+      width: 210mm;
+      margin: 0 auto;
+    }
+
+    .page {
+      position: relative;
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 13mm 14mm;
+      page-break-after: always;
+      background:
+        radial-gradient(95% 80% at 50% 50%, rgba(183, 199, 226, 0.2), transparent 70%),
+        radial-gradient(70% 55% at 100% 0%, rgba(191, 208, 235, 0.24), transparent 66%),
+        linear-gradient(165deg, var(--bg-0), var(--bg-1) 54%, var(--bg-2));
+      overflow: hidden;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+    }
+
+    .page::before,
+    .page::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(178, 138, 67, 0.18);
+      border-radius: 999px;
+      pointer-events: none;
+    }
+
+    .page::before {
+      width: 260px;
+      height: 260px;
+      top: -110px;
+      right: -90px;
+    }
+
+    .page::after {
+      width: 320px;
+      height: 320px;
+      left: -180px;
+      bottom: -180px;
+    }
+
+    .watermark {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Cinzel", serif;
+      font-size: 62px;
+      letter-spacing: 10px;
+      color: rgba(94, 114, 149, 0.14);
+      transform: rotate(-24deg);
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+    }
+
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 7mm;
+      color: var(--ink-2);
+      font-size: 10.5px;
+      letter-spacing: 0.35px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(26, 62, 112, 0.18));
+    }
+
+    .section-title {
+      margin: 0;
+      color: var(--gold-0);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 1.18;
+      letter-spacing: 0.45px;
+    }
+
+    .section-subtitle {
+      margin: 2.5mm 0 4mm;
+      color: var(--ink-1);
+      font-size: 12.6px;
+      line-height: 1.46;
+    }
+
+    .section-kicker {
+      margin: 0 0 2mm;
+      color: var(--gold-1);
+      font-weight: 600;
+      font-size: 10.6px;
+      letter-spacing: 0.65px;
+      text-transform: uppercase;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 8px 10px;
+      box-shadow: 0 6px 18px rgba(24, 46, 78, 0.08);
+      overflow-wrap: anywhere;
+    }
+
+    .card h4 {
+      margin: 0 0 4px;
+      font-family: "Cinzel", serif;
+      font-size: 13.2px;
+      color: var(--gold-0);
+      font-weight: 600;
+      line-height: 1.28;
+    }
+
+    .card p,
+    .card li {
+      margin: 0;
+      color: var(--ink-1);
+      font-size: 11.6px;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .hero {
+      margin-top: 25mm;
+      text-align: center;
+    }
+
+    .hero .hindi {
+      margin: 0;
+      font-size: 20px;
+      color: var(--gold-0);
+      letter-spacing: 0.35px;
+      line-height: 1.4;
+    }
+
+    .hero .english {
+      margin: 3.4mm 0 1mm;
+      font-family: var(--font-heading);
+      font-size: 34px;
+      line-height: 1.15;
+      color: var(--ink-0);
+    }
+
+    .hero .sub {
+      margin: 0;
+      font-size: 13px;
+      color: #4f688a;
+      letter-spacing: 0.25px;
+    }
+
+    .identity {
+      margin-top: 15mm;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .identity .card p {
+      font-size: 13px;
+    }
+
+    .value {
+      color: var(--ink-0);
+      font-weight: 700;
+    }
+
+    .risk-band {
+      display: inline-flex;
+      margin-top: 2mm;
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(177, 142, 76, 0.65);
+      background: rgba(241, 231, 206, 0.95);
+      color: #725421;
+      font-size: 11.6px;
+      font-weight: 600;
+    }
+
+    .narrative {
+      margin-top: 6px;
+      color: var(--ink-1);
+      font-size: 12px;
+      line-height: 1.54;
+      overflow-wrap: anywhere;
+    }
+
+    .diagram-shell {
+      margin-top: 7px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 6px;
+    }
+
+    .diagram-shell svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .diagram-shell.compact svg {
+      max-height: 182px;
+    }
+
+    .diagram-shell.loshu svg {
+      max-height: 168px;
+    }
+
+    .metric-grid {
+      margin-top: 6px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+    }
+
+    .metric-card {
+      border-radius: 11px;
+      border: 1px solid var(--line);
+      background: rgba(242, 248, 255, 0.96);
+      padding: 7px 8px;
+    }
+
+    .metric-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 3px;
+      gap: 4px;
+    }
+
+    .metric-name {
+      font-size: 11px;
+      color: var(--ink-1);
+      font-weight: 600;
+      line-height: 1.34;
+    }
+
+    .metric-score {
+      font-family: "Cinzel", serif;
+      color: var(--gold-0);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .metric-status {
+      font-size: 10px;
+      color: var(--gold-1);
+      margin-bottom: 2px;
+      line-height: 1.35;
+    }
+
+    .metric-copy {
+      font-size: 10.3px;
+      line-height: 1.42;
+      color: var(--ink-2);
+      overflow-wrap: anywhere;
+    }
+
+    .chart-shell {
+      height: 200px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(247, 252, 255, 0.98);
+      padding: 8px;
+      margin-bottom: 6px;
+    }
+
+    .tag-list {
+      margin: 6px 0 0;
+      padding-left: 17px;
+      color: var(--ink-1);
+      font-size: 11px;
+      line-height: 1.42;
+    }
+
+    .flow-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 7px;
+    }
+
+    .footer-note {
+      margin-top: 5mm;
+      color: var(--ink-2);
+      font-size: 10.2px;
+      letter-spacing: 0.25px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="report-root">
+    <section class="page">
+      {% if watermark %}<div class="watermark">Preview</div>{% endif %}
+      <div class="content">
+        <div class="topline">
+          <div class="brand">
+            {% if assets.brand_logo_uri %}<img src="{{ assets.brand_logo_uri }}" alt="NumAI logo" />{% endif %}
+            <span>NumAI Strategic Intelligence Engine v{{ meta.version }}</span>
+          </div>
+          <span>{{ meta.report_date }}</span>
+        </div>
+
+        <div class="hero">
+          <p class="hindi">रणनीतिक जीवन इंटेलिजेंस ऑडिट</p>
+          <h1 class="english">{{ cover.title }}</h1>
+          <p class="sub">{{ cover.subtitle }}</p>
+        </div>
+
+        <div class="identity">
+          <div class="card"><h4>क्लाइंट | Client</h4><p class="value">{{ cover.name }}</p></div>
+          <div class="card"><h4>जन्म तिथि | Date of Birth</h4><p class="value">{{ cover.dob }}</p></div>
+          <div class="card"><h4>रिस्क बैंड | Risk Band</h4><p><span class="risk-band">{{ cover.risk_band }}</span></p></div>
+          <div class="card"><h4>प्लान टियर | Plan Tier</h4><p class="value">{{ meta.plan }}</p></div>
+        </div>
+
+        <p class="footer-note">Generated by deterministic numerology + interpretation + AI narrative orchestration</p>
+      </div>
+    </section>
+
+    <section class="page">
+      {% if watermark %}<div class="watermark">Preview</div>{% endif %}
+      <div class="content">
+        <div class="topline">
+          <span>Page 2</span>
+          <span>Primary Insight</span>
+        </div>
+        <p class="section-kicker">प्राथमिक अंतर्दृष्टि | Primary Insight</p>
+        <h2 class="section-title">Core Diagnostic</h2>
+        <p class="section-subtitle">Deterministic numerology architecture और behavioral metrics से निकला strategic diagnosis.</p>
+
+        <div class="grid-2">
+          <div class="card"><h4>मुख्य आर्केटाइप | Core Archetype</h4><p>{{ primary_insight.core_archetype }}</p></div>
+          <div class="card"><h4>मुख्य ताकत | Strength</h4><p>{{ primary_insight.strength }}</p></div>
+          <div class="card"><h4>मुख्य कमी | Critical Deficit</h4><p>{{ primary_insight.critical_deficit }}</p></div>
+          <div class="card"><h4>स्थिरता जोखिम | Stability Risk</h4><p>{{ primary_insight.stability_risk }}</p></div>
+        </div>
+
+        <div class="grid-3" style="margin-top: 8px;">
+          <div class="card"><h4>फेज 1 डायग्नोस्टिक | Phase 1 Diagnostic</h4><p>{{ primary_insight.phase_1 }}</p></div>
+          <div class="card"><h4>फेज 2 ब्लूप्रिंट | Phase 2 Blueprint</h4><p>{{ primary_insight.phase_2 }}</p></div>
+          <div class="card"><h4>फेज 3 इंटरवेंशन | Phase 3 Intervention</h4><p>{{ primary_insight.phase_3 }}</p></div>
+        </div>
+
+        <p class="narrative">{{ primary_insight.narrative }}</p>
+      </div>
+    </section>
+
+    <section class="page">
+      {% if watermark %}<div class="watermark">Preview</div>{% endif %}
+      <div class="content">
+        <div class="topline">
+          <span>Page 3</span>
+          <span>Intelligence Metrics</span>
+        </div>
+        <p class="section-kicker">इंटेलिजेंस मेट्रिक्स | Intelligence Metrics</p>
+        <h2 class="section-title">Risk Geometry</h2>
+        <p class="section-subtitle">Radar intelligence + interpretation spine for clear correction priorities.</p>
+
+        <div class="chart-shell">
+          <canvas id="metrics-radar"></canvas>
+        </div>
+
+        <div class="grid-2" style="margin-bottom: 6px;">
+          <div class="card">
+            <h4>रिस्क बैंड वर्गीकरण | Risk Band Classification</h4>
+            <p>{{ metrics.risk_band }}</p>
+          </div>
+          <div class="card">
+            <h4>इंटरवेंशन फोकस | Intervention Focus</h4>
+            <p>{{ metrics.spine.intervention_focus }}</p>
+          </div>
+        </div>
+
+        <div class="metric-grid">
+          {% for row in metrics.rows %}
+          <div class="metric-card">
+            <div class="metric-head">
+              <span class="metric-name">{{ row.label }}</span>
+              <span class="metric-score">{{ row.value }}</span>
+            </div>
+            <div class="metric-status">स्थिति | Status: {{ row.status }}</div>
+            <div class="metric-copy">{{ row.meaning }}</div>
+            <div class="metric-copy">एक्शन | Action: {{ row.improvement }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      {% if watermark %}<div class="watermark">Preview</div>{% endif %}
+      <div class="content">
+        <div class="topline">
+          <span>Page 4</span>
+          <span>Numerology Architecture</span>
+        </div>
+        <p class="section-kicker">मूल अंक संरचना | Numerology Architecture</p>
+        <h2 class="section-title">Structural Model</h2>
+
+        <div class="grid-2">
+          <div class="card"><h4>फाउंडेशन (Life Path)</h4><p class="value">{{ architecture.foundation }}</p></div>
+          <div class="card"><h4>फसाड (Name Number)</h4><p class="value">{{ architecture.facade }}</p></div>
+          <div class="card"><h4>लेफ्ट पिलर (Destiny)</h4><p class="value">{{ architecture.left_pillar }}</p></div>
+          <div class="card"><h4>राइट पिलर (Expression)</h4><p class="value">{{ architecture.right_pillar }}</p></div>
+        </div>
+
+        <div class="diagram-shell compact" style="margin-top: 8px;">{{ diagrams.numerology_architecture | safe }}</div>
+        <p class="narrative">{{ architecture.narrative }}</p>
+      </div>
+    </section>
+
+    <section class="page">
+      {% if watermark %}<div class="watermark">Preview</div>{% endif %}
+      <div class="content">
+        <div class="topline">
+          <span>Page 5</span>
+          <span>Archetype Intelligence</span>
+        </div>
+        <p class="section-kicker">आर्केटाइप इंटेलिजेंस | Archetype Intelligence</p>
+        <h2 class="section-title">Behavioral Signature</h2>
+
+        <div class="flow-col">
+          <div class="card"><h4>आर्केटाइप सिग्नेचर | Archetype Signature</h4><p>{{ archetype.signature }}</p></div>
+          <div class="card"><h4>लीडरशिप ट्रेट्स | Leadership Traits</h4><p>{{ archetype.leadership_traits }}</p></div>
+          <div class="card"><h4>शैडो ट्रेट्स | Shadow Traits</h4><p>{{ archetype.shadow_traits }}</p></div>
+          <div class="card"><h4>ग्रोथ पाथ | Growth Path</h4><p>{{ archetype.growth_path }}</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      {% if watermark %}<div class="watermark">Preview</div>{% endif %}
+      <div class="content">
+        <div class="topline">
+          <span>Page 6</span>
+          <span>Lo Shu Diagnostic</span>
+        </div>
+        <p class="section-kicker">लो शू डायग्नोस्टिक | Lo Shu Diagnostic</p>
+        <h2 class="section-title">Energy Matrix</h2>
+
+        <div class="grid-2">
+          <div class="card"><h4>उपस्थित अंक | Present Numbers</h4><p class="value">{{ loshu.present_numbers }}</p></div>
+          <div class="card"><h4>अनुपस्थित अंक | Missing Numbers</h4><p class="value">{{ loshu.missing_numbers }}</p></div>
+          <div class="card"><h4>केंद्र 5 | Center 5</h4><p class="value">{{ loshu.center_presence }}</p></div>
+          <div class="card"><h4>ऊर्जा असंतुलन | Energy Imbalance</h4><p>{{ loshu.energy_imbalance }}</p></div>
+        </div>
+
+        <div class="diagram-shell loshu" style="margin-top: 7px;">{{ diagrams.loshu_grid | safe }}</div>
+
+        {% if loshu.missing_number_meanings %}
+        <ul class="tag-list">
+          {% for item in loshu.missing_number_meanings %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        <p class="narrative">{{ loshu.narrative }}</p>
+      </div>
+    </section>
+
+    <section class="page">
+      {% if watermark %}<div class="watermark">Preview</div>{% endif %}
+      <div class="content">
+        <div class="topline">
+          <span>Page 7</span>
+          <span>Planetary Mapping</span>
+        </div>
+        <p class="section-kicker">ग्रह मैपिंग | Planetary Mapping</p>
+        <h2 class="section-title">Orbit Intelligence</h2>
+
+        <div class="grid-3">
+          <div class="card"><h4>पृष्ठभूमि बल | Background Forces</h4><p>{{ planetary.background_forces }}</p></div>
+          <div class="card"><h4>मुख्य ग्रह हस्तक्षेप | Primary Intervention Planet</h4><p class="value">{{ planetary.primary_intervention_planet }}</p></div>
+          <div class="card"><h4>कैलिब्रेशन क्लस्टर | Calibration Cluster</h4><p>{{ planetary.calibration_cluster }}</p></div>
+        </div>
+
+        <div class="diagram-shell compact" style="margin-top: 8px;">{{ diagrams.planetary_orbit | safe }}</div>
+        <p class="narrative">{{ planetary.narrative }}</p>
+      </div>
+    </section>
+
+    <section class="page">
+      {% if watermark %}<div class="watermark">Preview</div>{% endif %}
+      <div class="content">
+        <div class="topline">
+          <span>Page 8</span>
+          <span>Structural Deficit Model</span>
+        </div>
+        <p class="section-kicker">स्ट्रक्चरल डेफिसिट मॉडल | Structural Deficit Model</p>
+        <h2 class="section-title">Deficit to Patch Flow</h2>
+
+        <div class="grid-3">
+          <div class="card"><h4>स्ट्रक्चरल डेफिसिट | Structural Deficit</h4><p>{{ deficit.deficit }}</p></div>
+          <div class="card"><h4>व्यवहारिक लक्षण | Behavioral Symptom</h4><p>{{ deficit.symptom }}</p></div>
+          <div class="card"><h4>इंजीनियर्ड पैच | Engineered Patch</h4><p>{{ deficit.patch }}</p></div>
+        </div>
+
+        <div class="diagram-shell compact" style="margin-top: 8px;">{{ diagrams.structural_deficit | safe }}</div>
+        <p class="narrative">{{ deficit.summary }}</p>
+      </div>
+    </section>
+
+    <section class="page">
+      {% if watermark %}<div class="watermark">Preview</div>{% endif %}
+      <div class="content">
+        <div class="topline">
+          <span>Page 9</span>
+          <span>Circadian Alignment</span>
+        </div>
+        <p class="section-kicker">सर्केडियन एलाइनमेंट | Circadian Alignment</p>
+        <h2 class="section-title">Daily Rhythm Protocol</h2>
+
+        <div class="grid-3">
+          <div class="card"><h4>मॉर्निंग रूटीन | Morning Routine</h4><p>{{ circadian.morning }}</p></div>
+          <div class="card"><h4>वर्क एलाइनमेंट | Work Alignment</h4><p>{{ circadian.work }}</p></div>
+          <div class="card"><h4>ईवनिंग शटडाउन | Evening Shutdown</h4><p>{{ circadian.evening }}</p></div>
+        </div>
+
+        <p class="narrative">{{ circadian.narrative }}</p>
+      </div>
+    </section>
+
+    <section class="page">
+      {% if watermark %}<div class="watermark">Preview</div>{% endif %}
+      <div class="content">
+        <div class="topline">
+          <span>Page 10</span>
+          <span>Environment Alignment</span>
+        </div>
+        <p class="section-kicker">पर्यावरण एलाइनमेंट | Environment Alignment</p>
+        <h2 class="section-title">External Calibration Layer</h2>
+
+        <div class="flow-col">
+          <div class="card"><h4>भौतिक स्थान | Physical Space</h4><p>{{ environment.physical_space }}</p></div>
+          <div class="card"><h4>रंग एलाइनमेंट | Color Alignment</h4><p>{{ environment.color_alignment }}</p></div>
+          <div class="card"><h4>मोबाइल नंबर ऊर्जा विश्लेषण | Mobile Number Energy Analysis</h4><p>{{ environment.mobile_number_analysis }}</p></div>
+          <div class="card"><h4>डिजिटल व्यवहार | Digital Behavior</h4><p>{{ environment.digital_behavior }}</p></div>
+        </div>
+
+        <p class="narrative">{{ environment.narrative }}</p>
+      </div>
+    </section>
+
+    <section class="page">
+      {% if watermark %}<div class="watermark">Preview</div>{% endif %}
+      <div class="content">
+        <div class="topline">
+          <span>Page 11</span>
+          <span>Vedic Remedy Protocol</span>
+        </div>
+        <p class="section-kicker">वैदिक उपाय प्रोटोकॉल | Vedic Remedy Protocol</p>
+        <h2 class="section-title">Focused Intervention</h2>
+
+        <div class="grid-2">
+          <div class="card"><h4>फोकस | Focus</h4><p>{{ vedic.focus }}</p></div>
+          <div class="card"><h4>कोड (मंत्र) | Code (Mantra)</h4><p>{{ vedic.code }}</p></div>
+          <div class="card"><h4>पैरामीटर (प्रैक्टिस) | Parameter (Practice)</h4><p>{{ vedic.parameter }}</p></div>
+          <div class="card"><h4>आउटपुट (दान) | Output (Donation)</h4><p>{{ vedic.output }}</p></div>
+        </div>
+
+        <div class="card" style="margin-top: 7px;"><h4>उद्देश्य | Purpose</h4><p>{{ vedic.purpose }}</p></div>
+        {% if vedic.pronunciation %}
+        <div class="card" style="margin-top: 7px;"><h4>उच्चारण | Pronunciation</h4><p>{{ vedic.pronunciation }}</p></div>
+        {% endif %}
+        <div class="card" style="margin-top: 7px;"><h4>ग्रह एलाइनमेंट | Planetary Alignment</h4><p>{{ vedic.planetary_alignment }}</p></div>
+      </div>
+    </section>
+
+    <section class="page">
+      {% if watermark %}<div class="watermark">Preview</div>{% endif %}
+      <div class="content">
+        <div class="topline">
+          <span>Page 12</span>
+          <span>21-Day Execution Plan</span>
+        </div>
+        <p class="section-kicker">21-दिवसीय एक्शन प्लान | 21-Day Execution Plan</p>
+        <h2 class="section-title">Action Architecture</h2>
+
+        <div class="grid-3">
+          <div class="card"><h4>रिद्म इंस्टॉल | Install Rhythm</h4><p>{{ execution.install_rhythm }}</p></div>
+          <div class="card"><h4>एंकर डिप्लॉय | Deploy Anchor</h4><p>{{ execution.deploy_anchor }}</p></div>
+          <div class="card"><h4>प्रोटोकॉल रन | Run Protocol</h4><p>{{ execution.run_protocol }}</p></div>
+        </div>
+
+        {% if execution.checkpoints %}
+        <div class="card" style="margin-top: 8px;">
+          <h4>चेकपॉइंट्स | Checkpoints</h4>
+          <ul class="tag-list">
+            {% for item in execution.checkpoints %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <p class="narrative">{{ execution.summary }}</p>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+  <script>
+    window.__numaiReady = false;
+
+    (function renderRadarChart() {
+      const canvas = document.getElementById("metrics-radar");
+      if (!canvas) {
+        window.__numaiReady = true;
+        return;
+      }
+
+      const labels = {{ metrics.radar_labels_json | safe }};
+      const values = {{ metrics.radar_values_json | safe }};
+
+      const markReady = () => {
+        window.__numaiReady = true;
+      };
+
+      if (window.Chart) {
+        const ctx = canvas.getContext("2d");
+        new Chart(ctx, {
+          type: "radar",
+          data: {
+            labels,
+            datasets: [{
+              label: "Intelligence Metrics",
+              data: values,
+              fill: true,
+              backgroundColor: "rgba(178, 138, 67, 0.22)",
+              borderColor: "rgba(178, 138, 67, 0.95)",
+              borderWidth: 2,
+              pointBackgroundColor: "#7f5d27",
+              pointBorderColor: "#eef5ff",
+              pointRadius: 2.8
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: {
+              duration: 680,
+              onComplete: markReady
+            },
+            scales: {
+              r: {
+                min: 0,
+                max: 100,
+                ticks: {
+                  stepSize: 20,
+                  backdropColor: "transparent",
+                  color: "#4f688a",
+                  z: 1
+                },
+                angleLines: { color: "rgba(79, 104, 138, 0.24)" },
+                grid: { color: "rgba(79, 104, 138, 0.2)" },
+                pointLabels: {
+                  color: "#1f3b61",
+                  font: {
+                    size: 10.5,
+                    family: "Inter, Noto Sans Devanagari, sans-serif"
+                  }
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                labels: {
+                  color: "#1f3b61",
+                  font: {
+                    family: "Inter, Noto Sans Devanagari, sans-serif",
+                    size: 11
+                  }
+                }
+              }
+            }
+          }
+        });
+      } else {
+        const ctx = canvas.getContext("2d");
+        const width = canvas.width;
+        const height = canvas.height;
+        ctx.fillStyle = "#eef5ff";
+        ctx.fillRect(0, 0, width, height);
+        ctx.fillStyle = "#7f5d27";
+        ctx.font = "14px Inter";
+        ctx.fillText("Chart.js unavailable - fallback view", 16, 26);
+        markReady();
+      }
+
+      setTimeout(() => {
+        if (window.__numaiReady !== true) {
+          window.__numaiReady = true;
+        }
+      }, 3500);
+    })();
+  </script>
+</body>
+</html>

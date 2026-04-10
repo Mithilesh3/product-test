@@ -1,0 +1,907 @@
+.dhyanam-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 80px 20px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* VIDEO */
+.dhyanam-bg video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+}
+
+/* GRID LAYOUT */
+.dhyanam-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  align-items: center;
+  gap: 40px;
+  z-index: 2;
+}
+
+/* CENTER */
+.dhyanam-content {
+  text-align: right;
+}
+
+/* LEFT */
+.dhyanam-side.left {
+  justify-self: end;
+  text-align: center;
+}
+
+/* RIGHT */
+.dhyanam-side.right {
+  justify-self: start;
+  text-align: left;
+}
+
+/* SIDE BOX */
+.dhyanam-side p {
+  margin: 10px 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: 0.3s;
+}
+
+.dhyanam-side p:hover {
+  transform: scale(1.05);
+  background: rgba(168,85,247,0.2);
+  box-shadow: 0 0 15px rgba(168,85,247,0.5);
+}
+
+/* BUTTON */
+.dhyanam-btn {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  box-shadow: 0 0 25px rgba(168,85,247,0.6);
+}
+
+/* SOUND */
+.dhyanam-sound {
+  margin-top: 15px;
+  cursor: pointer;
+  opacity: 0.8;
+  align-items: center;
+}
+
+/* VIDEO FIX */
+.dhyanam-bg video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
+  z-index: 0;
+}
+
+/* CONTENT ABOVE VIDEO */
+.dhyanam-container,
+.dhyanam-content {
+  position: relative;
+  z-index: 2;
+}
+.dhyanam-right p {
+  margin: 10px 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: 0.3s;
+}
+
+.dhyanam-right p:hover {
+  transform: scale(1.05);
+  background: rgba(168,85,247,0.2);
+}
+
+
+.dhyanam-right {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+/* 🔥 BOX FIX */
+.dhyanam-right p {
+  width: 220px; /* fixed size */
+  height: 50px;
+
+  display: flex;
+  align-items: center;      /* vertical center */
+  justify-content: center;  /* horizontal center */
+
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+
+  font-size: 14px;
+  text-align: center;
+
+  transition: 0.3s;
+}
+
+.dhyanam-right p:hover {
+  transform: scale(1.05);
+  background: rgba(168,85,247,0.2);
+}.dhyanam-left {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* 🔥 HEADING */
+.dhyanam-left h2 {
+  font-size: 36px;
+  line-height: 1.2;
+  max-width: 400px;
+}
+/* 🔥 QUOTE */
+.dhyanam-quote {
+  font-style: italic;
+  opacity: 0.8;
+  white-space: nowrap; /* ❗ one line */
+}
+
+/* 🔥 DESCRIPTION */
+.dhyanam-left p {
+  font-weight: 500;
+}
+
+/* BREATH TEXT */
+.dhyanam-breath {
+  letter-spacing: 2px;
+  opacity: 0.7;
+}
+.dhyanam-desc {
+  text-align: center;
+  font-weight: 500;
+}
+
+.dhyanam-breath {
+  text-align: center;
+  letter-spacing: 2px;
+  opacity: 0.7;
+}
+.dhyanam-left {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* 🔥 button center */
+.dhyanam-btn {
+  align-self: center;
+}
+
+/* 🔥 sound center */
+.dhyanam-sound {
+  text-align: center;
+}
+.dhyanam-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-end; /* 🔥 push to right */
+}
+.dhyanam-left h2 {
+  white-space: normal; /* mobile fix */
+}
+.dhyanam-left {
+  margin-left: 80px; /* 🔥 adjust 60–120px */
+}
+.dhyanam-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 🔥 main fix */
+  gap: 18px;
+  height: 100%;
+}
+.dhyanam-right p {
+  width: 240px;
+}
+.dhyanam-section {
+  margin-top: 40px;
+}
+
+.number-section {
+  margin-top: 40px;
+}
+
+/* Guided breathing overlay layer */
+.dhyanam-section .dhyanam-bg {
+  z-index: 0;
+}
+
+.dhyanam-section .dhyanam-container {
+  position: relative;
+  z-index: 2;
+}
+
+.dhyanam-section .dhyanam-center {
+  position: relative;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.dhyanam-section .dhyanam-center > img,
+.dhyanam-section .dhyanam-center .yoga-mudra {
+  position: relative;
+  z-index: 1;
+}
+
+.breathing-overlay {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 440px);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(160deg, rgba(7, 14, 33, 0.78), rgba(13, 27, 52, 0.68));
+  backdrop-filter: blur(8px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 22px 45px rgba(2, 6, 23, 0.35);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.breathing-overlay.immersive {
+  width: min(100%, 360px);
+  padding: 16px;
+}
+
+.breathing-mode-selector {
+  display: grid;
+  gap: 8px;
+}
+
+.breathing-mode-tab {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(15, 23, 42, 0.35);
+  border-radius: 12px;
+  color: #e2e8f0;
+  padding: 10px 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.breathing-mode-tab:hover {
+  border-color: rgba(196, 181, 253, 0.5);
+}
+
+.breathing-mode-tab.active {
+  border-color: rgba(196, 181, 253, 0.8);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.32), rgba(147, 51, 234, 0.34));
+}
+
+.breathing-mode-tab:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.breathing-mode-title {
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.breathing-mode-subtitle {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: #bfdbfe;
+}
+
+.breathing-timer {
+  margin: 0 auto;
+  width: 110px;
+  height: 110px;
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  font-size: 44px;
+  font-weight: 700;
+  color: #f8fafc;
+  border: 2px solid rgba(168, 85, 247, 0.56);
+  box-shadow: 0 0 0 8px rgba(129, 140, 248, 0.13), 0 14px 35px rgba(15, 23, 42, 0.4);
+}
+
+.breathing-timer.phase-inhale {
+  animation: breath-expand var(--phase-duration, 4s) ease-in-out forwards;
+}
+
+.breathing-timer.phase-hold {
+  animation: breath-hold var(--phase-duration, 4s) ease-in-out forwards;
+}
+
+.breathing-timer.phase-exhale {
+  animation: breath-contract var(--phase-duration, 4s) ease-in-out forwards;
+}
+
+.breathing-timer.phase-chant_om {
+  animation: breath-om var(--phase-duration, 10s) ease-in-out forwards;
+}
+
+.breathing-phase-text {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.breathing-yoga-guide {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(15, 23, 42, 0.32);
+}
+
+.breathing-yoga-mode {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #c4b5fd;
+}
+
+.breathing-yoga-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #dbeafe;
+}
+
+.breathing-yoga-instruction {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #cbd5e1;
+  line-height: 1.45;
+}
+
+.breathing-control-panel {
+  display: grid;
+  gap: 10px;
+}
+
+.breathing-overlay.immersive .breathing-mode-selector,
+.breathing-overlay.immersive .breathing-control-panel {
+  display: none;
+}
+
+.breathing-mini-heading {
+  margin: 0;
+  text-align: center;
+  font-size: 12px;
+  color: #bfdbfe;
+  letter-spacing: 0.04em;
+}
+
+.breathing-duration-group,
+.breathing-action-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.breathing-chip,
+.breathing-action {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(15, 23, 42, 0.45);
+  color: #e2e8f0;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.breathing-chip.active {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.56), rgba(147, 51, 234, 0.6));
+  border-color: rgba(196, 181, 253, 0.75);
+}
+
+.breathing-action:disabled,
+.breathing-chip:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.breathing-action.start {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.55), rgba(5, 150, 105, 0.55));
+}
+
+.breathing-action.stop {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.45), rgba(127, 29, 29, 0.45));
+}
+
+.breathing-action.reset {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.45), rgba(30, 64, 175, 0.45));
+}
+
+.dhyanam-mode-btn {
+  width: 240px;
+  min-height: 72px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #e2e8f0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.dhyanam-mode-btn:hover {
+  transform: scale(1.03);
+  background: rgba(168, 85, 247, 0.2);
+}
+
+.dhyanam-mode-btn.active {
+  border-color: rgba(196, 181, 253, 0.8);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.34), rgba(147, 51, 234, 0.34));
+}
+
+.dhyanam-mode-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.dhyanam-mode-title {
+  font-weight: 700;
+}
+
+.dhyanam-mode-subtitle {
+  font-size: 11px;
+  color: #cbd5e1;
+}
+
+.dhyanam-right-heading {
+  width: 240px;
+  text-align: left;
+  margin: 0;
+  color: #e2e8f0;
+  font-weight: 700;
+}
+
+.breathing-disclaimer {
+  margin: 2px 0 0;
+  font-size: 11px;
+  line-height: 1.45;
+  color: #cbd5e1;
+  opacity: 0.9;
+}
+
+.dhyanam-container .dhyanam-left,
+.dhyanam-container .dhyanam-right {
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+}
+
+.dhyanam-container.is-immersive {
+  grid-template-columns: 1fr;
+  justify-items: end;
+  align-items: start;
+  width: 100%;
+  max-width: 100%;
+  padding: 20px 36px 20px 20px;
+}
+
+.dhyanam-container.is-immersive .dhyanam-center {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-top: 18px;
+}
+
+.dhyanam-container.is-immersive .breathing-overlay {
+  width: min(100%, 340px);
+}
+
+.dhyanam-container .immersive-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transform: translateY(8px);
+  position: absolute;
+}
+
+@keyframes breath-expand {
+  from { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(129, 140, 248, 0.15); }
+  to { transform: scale(1.08); box-shadow: 0 0 0 14px rgba(129, 140, 248, 0.24); }
+}
+
+@keyframes breath-contract {
+  from { transform: scale(1.08); box-shadow: 0 0 0 14px rgba(129, 140, 248, 0.24); }
+  to { transform: scale(0.88); box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.1); }
+}
+
+@keyframes breath-hold {
+  from { transform: scale(1.01); }
+  to { transform: scale(1.01); }
+}
+
+@keyframes breath-om {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 1024px) {
+  .dhyanam-section .dhyanam-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .dhyanam-section .dhyanam-left {
+    margin-left: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .dhyanam-section .dhyanam-right {
+    align-items: center;
+  }
+
+  .dhyanam-container.is-immersive {
+    justify-items: center;
+    padding: 16px;
+  }
+
+  .dhyanam-container.is-immersive .dhyanam-center {
+    justify-content: center;
+    padding-top: 0;
+    min-height: 72vh;
+  }
+}
+
+.breathing-bilingual-value {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  vertical-align: top;
+}
+
+.dhyanam-hint {
+  opacity: 0.78;
+  font-size: 14px;
+}
+
+.om-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.om-particle {
+  position: absolute;
+  font-size: 18px;
+  color: rgba(220, 183, 95, 0.88);
+  text-shadow: 0 0 10px rgba(220, 183, 95, 0.5);
+  animation: om-float 3.8s linear infinite;
+}
+
+.om-particle:nth-child(odd) {
+  color: rgba(196, 181, 253, 0.88);
+}
+
+.om-particle:nth-child(1) { left: 6%; top: 82%; animation-delay: 0s; }
+.om-particle:nth-child(2) { left: 14%; top: 74%; animation-delay: 0.2s; }
+.om-particle:nth-child(3) { left: 22%; top: 88%; animation-delay: 0.45s; }
+.om-particle:nth-child(4) { left: 29%; top: 79%; animation-delay: 0.65s; }
+.om-particle:nth-child(5) { left: 37%; top: 86%; animation-delay: 0.9s; }
+.om-particle:nth-child(6) { left: 45%; top: 77%; animation-delay: 1.1s; }
+.om-particle:nth-child(7) { left: 53%; top: 84%; animation-delay: 1.35s; }
+.om-particle:nth-child(8) { left: 61%; top: 73%; animation-delay: 1.55s; }
+.om-particle:nth-child(9) { left: 69%; top: 87%; animation-delay: 1.8s; }
+.om-particle:nth-child(10) { left: 77%; top: 78%; animation-delay: 2.05s; }
+.om-particle:nth-child(11) { left: 84%; top: 88%; animation-delay: 2.3s; }
+.om-particle:nth-child(12) { left: 90%; top: 76%; animation-delay: 2.5s; }
+.om-particle:nth-child(13) { left: 95%; top: 85%; animation-delay: 2.8s; }
+.om-particle:nth-child(14) { left: 50%; top: 90%; animation-delay: 3.1s; }
+
+@keyframes om-float {
+  0% { transform: translateY(0) scale(0.7); opacity: 0; }
+  15% { opacity: 0.85; }
+  70% { opacity: 0.6; }
+  100% { transform: translateY(-250px) scale(1.2); opacity: 0; }
+}
+
+/* Chakra rising flow + immersive polish */
+.chakra-flow {
+  position: absolute;
+  right: 20%;
+  top: 14%;
+  width: 78px;
+  height: 74vh;
+  z-index: 1;
+  pointer-events: none;
+  opacity: calc(0.3 + var(--chakra-intensity, 0.45) * 0.7);
+}
+
+.chakra-flow-column {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.chakra-flow-line {
+  position: absolute;
+  left: 50%;
+  top: 14%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 70%;
+  background: linear-gradient(180deg, rgba(196, 181, 253, 0.1), rgba(125, 211, 252, 0.34), rgba(110, 231, 183, 0.32));
+}
+
+.chakra-flow-node {
+  position: absolute;
+  left: 50%;
+  top: var(--chakra-node-y);
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  animation: chakra-node-idle 2.4s ease-in-out infinite;
+}
+
+.chakra-flow-node.active {
+  background: var(--chakra-color, rgba(196, 181, 253, 0.95));
+  box-shadow: 0 0 14px var(--chakra-color, rgba(196, 181, 253, 0.95));
+  width: 12px;
+  height: 12px;
+  animation: chakra-node-active var(--chakra-pulse-ms, 1050ms) ease-in-out infinite;
+}
+
+.chakra-flow-energy {
+  position: absolute;
+  left: 50%;
+  top: var(--chakra-energy-y, 48%);
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95), var(--chakra-color, rgba(196, 181, 253, 0.95)) 68%);
+  box-shadow: 0 0 30px var(--chakra-color, rgba(196, 181, 253, 0.95));
+  transition: top 120ms linear;
+  animation: chakra-energy-pulse var(--chakra-pulse-ms, 950ms) ease-in-out infinite;
+}
+
+.chakra-flow-energy::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  opacity: calc(0.26 + var(--chakra-intensity, 0.45) * 0.45);
+  animation: chakra-energy-ring var(--chakra-pulse-ms, 950ms) ease-out infinite;
+}
+
+.chakra-flow-caption {
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  transform: translateX(-50%);
+  color: #cbd5e1;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.breathing-circle {
+  margin: 0 auto;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(196, 181, 253, 0.22);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.breathing-circle .breathing-timer {
+  animation: none !important;
+}
+
+.breathing-circle.phase-inhale {
+  animation: breathe-circle-expand var(--phase-duration, 4s) linear forwards;
+}
+
+.breathing-circle.phase-hold {
+  transform: scale(1.3);
+}
+
+.breathing-circle.phase-exhale {
+  animation: breathe-circle-shrink var(--phase-duration, 4s) linear forwards;
+}
+
+.breathing-circle.phase-chant_om {
+  animation: breathe-circle-om var(--phase-duration, 10s) ease-in-out forwards;
+}
+
+.breathing-phase-block {
+  animation: phase-fade 200ms ease;
+}
+
+.breathing-energy-label {
+  margin: -2px 0 10px;
+  text-align: center;
+  font-size: 12px;
+  color: #c4b5fd;
+  letter-spacing: 0.06em;
+  animation: phase-fade 200ms ease;
+}
+
+.breathing-overlay.om-active {
+  box-shadow:
+    0 0 0 1px rgba(250, 204, 21, 0.22),
+    0 24px 48px rgba(2, 6, 23, 0.38),
+    0 0 34px rgba(250, 204, 21, 0.18);
+}
+
+.om-particle {
+  font-size: 16px;
+  opacity: calc(0.18 + var(--om-intensity, 0.5) * 0.72);
+  animation-duration: calc(4.2s - var(--om-intensity, 0.5) * 1.5s);
+}
+
+.om-particle:nth-child(1) { left: 10%; top: 84%; animation-delay: 0s; }
+.om-particle:nth-child(2) { left: 23%; top: 88%; animation-delay: 0.35s; }
+.om-particle:nth-child(3) { left: 36%; top: 82%; animation-delay: 0.7s; }
+.om-particle:nth-child(4) { left: 49%; top: 89%; animation-delay: 1.05s; }
+.om-particle:nth-child(5) { left: 62%; top: 84%; animation-delay: 1.4s; }
+.om-particle:nth-child(6) { left: 74%; top: 88%; animation-delay: 1.75s; }
+.om-particle:nth-child(7) { left: 86%; top: 82%; animation-delay: 2.1s; }
+.om-particle:nth-child(8) { left: 94%; top: 86%; animation-delay: 2.45s; }
+
+@keyframes breathe-circle-expand {
+  from { transform: scale(1); }
+  to { transform: scale(1.3); }
+}
+
+@keyframes breathe-circle-shrink {
+  from { transform: scale(1.3); }
+  to { transform: scale(1); }
+}
+
+@keyframes breathe-circle-om {
+  0% { transform: scale(1.1); }
+  50% { transform: scale(1.18); }
+  100% { transform: scale(1.1); }
+}
+
+@keyframes phase-fade {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes chakra-node-idle {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+  50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.9; }
+}
+
+@keyframes chakra-node-active {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    filter: saturate(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.28);
+    filter: saturate(1.25);
+  }
+}
+
+@keyframes chakra-energy-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.92); }
+  50% { transform: translate(-50%, -50%) scale(1.22); }
+}
+
+@keyframes chakra-energy-ring {
+  0% { transform: scale(0.75); opacity: 0.5; }
+  100% { transform: scale(1.22); opacity: 0; }
+}
+
+@media (max-width: 1024px) {
+  .chakra-flow {
+    display: none;
+  }
+}
+
+/* Final immersive alignment overrides */
+.dhyanam-container.is-immersive {
+  justify-items: end;
+  align-items: start;
+  padding: 12px 16px 12px 12px;
+}
+
+.dhyanam-container.is-immersive .dhyanam-center {
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-top: 10px;
+  min-height: 100vh;
+}
+
+.dhyanam-container.is-immersive .breathing-overlay {
+  width: 260px;
+  min-width: 260px;
+  border-radius: 14px;
+  padding: 12px 12px 10px;
+  gap: 8px;
+}
+
+.dhyanam-container.is-immersive .breathing-circle {
+  width: 118px;
+  height: 118px;
+}
+
+.dhyanam-container.is-immersive .breathing-timer {
+  width: 84px;
+  height: 84px;
+  font-size: 56px;
+}
+
+.dhyanam-container.is-immersive .breathing-phase-text {
+  font-size: 30px;
+}
+
+.dhyanam-container.is-immersive .breathing-energy-label {
+  margin: -4px 0 2px;
+  font-size: 14px;
+}
+
+.chakra-flow {
+  left: calc(50% + 14px);
+  right: auto;
+  transform: translateX(-50%);
+  top: 16%;
+  width: 64px;
+  height: 66vh;
+}
+
+.chakra-flow-caption {
+  display: none;
+}
+.dhyanam-section {
+  min-height: auto !important;
+  height: auto !important;
+  padding: 100px 20px !important;
+  margin-top: 100px !important;
+  display: block !important;
+}

@@ -1,0 +1,102 @@
+
+.number-section {
+  position: relative;
+  z-index: 5;
+
+  padding: 120px 20px;
+  background: linear-gradient(180deg, #020617, #030b1f);
+
+  display: flex;
+  justify-content: center;   /* 🔥 center horizontally */
+  align-items: center;
+}
+
+/* CARD */
+.num-card {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 40px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 40px rgba(168,85,247,0.2);
+
+  text-align: center; /* 🔥 fix alignment */
+}
+
+/* TITLE */
+.num-card h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.num-sub {
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+/* FORM */
+.num-form {
+  display: flex;
+  gap: 15px;
+  justify-content: center; /* 🔥 center inputs */
+  flex-wrap: wrap;
+}
+
+/* INPUT */
+.num-form input {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+
+  background: rgba(255,255,255,0.08);
+  color: white;
+
+  min-width: 200px;
+}
+
+/* BUTTON */
+.num-form button {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  color: white;
+
+  transition: 0.3s;
+}
+
+.num-form button:hover {
+  box-shadow: 0 0 20px rgba(168,85,247,0.8);
+}
+
+/* RESULT */
+.num-result {
+  margin-top: 25px;
+  padding: 20px;
+
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.number-section {
+  padding: 120px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.num-card {
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+}

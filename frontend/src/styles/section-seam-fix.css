@@ -1,0 +1,33 @@
+/* Final section seam patch for /login page stack.
+   Imported last to override legacy duplicated CSS. */
+
+main.auth-cosmic-shell,
+.dhyanam-section,
+.number-section,
+.site-footer {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+}
+
+main.auth-cosmic-shell {
+  padding-bottom: 0 !important;
+  box-shadow: inset 0 -3px 0 #020617 !important;
+}
+
+/* Join boundaries (Page 1->2, 2->3, 3->4) */
+main.auth-cosmic-shell + .dhyanam-section,
+.dhyanam-section + .number-section,
+.number-section + .site-footer {
+  margin-top: -2px !important;
+  border-top: 2px solid #020617 !important;
+}
+
+/* Remove legacy glow/separator overlays only on dhyanam join section */
+main.auth-cosmic-shell + .dhyanam-section::before,
+main.auth-cosmic-shell + .dhyanam-section::after {
+  content: none !important;
+  display: none !important;
+}
+

@@ -1,0 +1,101 @@
+{
+  "basic": {
+    "meta": {
+      "plan": "basic",
+      "plan_tier": "basic",
+      "enabledSections": [
+        "profile",
+        "dashboard",
+        "executive_summary",
+        "core_numbers",
+        "number_interaction",
+        "personality_profile",
+        "focus_snapshot",
+        "personal_year",
+        "lucky_dates",
+        "color_alignment",
+        "remedy",
+        "closing_summary"
+      ]
+    },
+    "profileSnapshot": {
+      "fullName": "Sample User",
+      "plan": "BASIC"
+    },
+    "dashboard": {
+      "riskBand": "Correctable",
+      "confidenceScore": 68
+    },
+    "sections": [
+      {
+        "sectionKey": "executive_summary",
+        "sectionTitle": "Executive Summary",
+        "summary": "Executive Summary is generated from deterministic inputs with focus on general_alignment.",
+        "keyStrength": "The current profile shows stronger signal in confidence_score, which can be used as the execution anchor.",
+        "keyRisk": "The key pressure remains around weakest_metric within a Correctable risk band.",
+        "practicalGuidance": "Keep one weekly identity-aligned habit, track it every Sunday, and avoid major decisions without review.",
+        "loadedEnergies": ["confidence_score", "karma_pressure_index"],
+        "scoreHighlights": [
+          { "label": "confidence_score", "value": "68" },
+          { "label": "karma_pressure_index", "value": "51" }
+        ]
+      }
+    ],
+    "closingInsight": "Prioritize consistent action on weak metrics while leveraging your strongest deterministic signals."
+  },
+  "standard": {
+    "meta": {
+      "plan": "standard",
+      "plan_tier": "standard",
+      "enabledSections": [
+        "profile",
+        "dashboard",
+        "executive_summary",
+        "core_numbers",
+        "number_interaction",
+        "personality_profile",
+        "focus_snapshot",
+        "personal_year",
+        "lucky_dates",
+        "color_alignment",
+        "remedy",
+        "closing_summary",
+        "lo_shu_grid",
+        "missing_numbers",
+        "repeating_numbers",
+        "mobile_numerology",
+        "mobile_life_compatibility",
+        "career_financial",
+        "relationship_patterns",
+        "health_tendencies",
+        "action_plan_90_days",
+        "growth_blockers",
+        "decision_style"
+      ]
+    },
+    "profileSnapshot": {
+      "fullName": "Sample User",
+      "plan": "STANDARD"
+    },
+    "dashboard": {
+      "riskBand": "Correctable",
+      "confidenceScore": 72
+    },
+    "sections": [
+      {
+        "sectionKey": "career_financial",
+        "sectionTitle": "Career and Financial Tendencies",
+        "summary": "Career and Financial Tendencies is generated from deterministic inputs with focus on career_growth.",
+        "keyStrength": "The current profile shows stronger signal in financial_discipline_index, which can be used as the execution anchor.",
+        "keyRisk": "The key pressure remains around weakest_metric within a Correctable risk band.",
+        "practicalGuidance": "Convert this section into one 30-day decision rule, one risk limit, and one measurable checkpoint.",
+        "loadedEnergies": ["financial_discipline_index", "confidence_score"],
+        "scoreHighlights": [
+          { "label": "financial_discipline_index", "value": "74" },
+          { "label": "confidence_score", "value": "72" }
+        ]
+      }
+    ],
+    "closingInsight": "Prioritize consistent action on weak metrics while leveraging your strongest deterministic signals."
+  }
+}

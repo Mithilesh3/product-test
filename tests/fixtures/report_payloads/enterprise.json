@@ -1,0 +1,47 @@
+{
+  "identity": {
+    "full_name": "Rahul Sharma",
+    "date_of_birth": "1993-08-15",
+    "gender": "male",
+    "country_of_residence": "India",
+    "email": "rahul@example.com",
+    "name_variations": ["Rahul", "Rahul Sharma"]
+  },
+  "birth_details": {
+    "date_of_birth": "1993-08-15",
+    "birthplace_city": "Delhi",
+    "birthplace_country": "India",
+    "time_of_birth": "07:30"
+  },
+  "focus": {
+    "life_focus": "career_growth"
+  },
+  "contact": {
+    "mobile_number": "9876543210",
+    "social_handle": "rahul.strategy",
+    "domain_handle": "rahulstrategy.in"
+  },
+  "preferences": {
+    "language_preference": "hindi",
+    "profession": "Technology",
+    "relationship_status": "married",
+    "career_type": "business",
+    "primary_goal": "business expansion with stable cashflow"
+  },
+  "career": {
+    "industry": "Technology",
+    "role": "entrepreneur",
+    "stress_level": 7
+  },
+  "financial": {
+    "monthly_income": 250000,
+    "debt_ratio": 28
+  },
+  "calibration": {
+    "decision_style": "research",
+    "stress_response": "overthink",
+    "money_decision_style": "calculated",
+    "biggest_weakness": "discipline"
+  },
+  "current_problem": "scale business without cashflow stress"
+}
