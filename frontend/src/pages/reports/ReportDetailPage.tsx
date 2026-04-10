@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import API from "../../services/api";
 import toast from "react-hot-toast";
-import type { ReportResponse } from "../../types/report";
+import type { ReportResponse as _ReportResponse } from "../../types/report";
 
 interface ReportContentMeta {
   plan_tier?: string;
